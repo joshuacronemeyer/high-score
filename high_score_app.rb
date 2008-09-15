@@ -34,11 +34,9 @@ class HighScore < Shoes
   def index
     background "static/background.png"
     navigation
-    stack(:margin => 4) do
-      machines = Machine.find(:all)
-      machines.each do |machine|
-        high_score_stack(machine, slack)
-      end
+    content = stack(:margin => 4)
+    Machine.find(:all).each do |machine|
+      high_score_stack(machine, content)
     end
   end
 
