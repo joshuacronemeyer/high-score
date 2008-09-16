@@ -11,41 +11,11 @@ require 'new_hash'
 
 class HighScore < Shoes
   FONT = 'PC Senior'
-  Database.test_connect
   url "/", :index
   url "/newscore", :new_score
   url "/dashboard", :dashboard
-
-  def high_score_stack(machine, target_stack)
-    target_stack.append{para("#{machine.name} Top 5", :font => FONT, :stroke => red, :size => 20, :align => "center")}
-    Score.top_five_scores_by_machine_id(machine.id).each do |score| 
-      target_stack.append do
-        flow do
-          para score.player.name, turq_centered
-          para score.score, turq_centered
-        end
-      end
-    end
-  end
-
-  def turq_centered
-    #TODO Could do some cool DSL type stuff so i could type turq.centered
-    {:stroke => turquoise, :font => FONT, :align => "center"}
-  end
-
-  def white_centered
-    {:font => FONT, :stroke => white, :align => "center"}
-  end
-
-  def navigation
-    stack do
-      banner "MonkeyFarm Arcade Classic", turq_centered
-      image("static/kong.png", :margin_left => "45%")
-      para link("Add a High Score", white_centered.with(:click, "/newscore"))
-      para link("View Dashboard", white_centered.with(:click, "/dashboard"))
-    end
-  end
-
+  Database.test_connect
+  
   def index
     background "static/background.png"
     navigation
@@ -80,11 +50,41 @@ class HighScore < Shoes
     navigation
     machines = Machine.find(:all)
     mystack = stack
+    index = -1
     animate(1) do |frame|
       mystack.clear
-      index = frame % machines.size
+      index += 1 if (frame % 3 == 0)
+      index %= machines.size
       high_score_stack(machines[index], mystack)
-      sleep 3 unless frame == 0
+    end
+  end
+  
+  private
+  def high_score_stack(machine, target_stack)
+    target_stack.append{para("#{machine.name} Top 5", :font => FONT, :stroke => red, :size => 20, :align => "center")}
+    Score.top_five_scores_by_machine_id(machine.id).each do |score| 
+      target_stack.append do
+          para "#{score.player.name} - #{score.score}", turq_centered
+      end
+    end
+  end
+
+  def turq_centered
+    #TODO Could do some cool DSL type stuff so i could type turq.centered
+    {:stroke => turquoise, :font => FONT, :align => "center"}
+  end
+
+  def white_centered
+    {:font => FONT, :stroke => white, :align => "center"}
+  end
+
+  def navigation
+    stack do
+      banner "MonkeyFarm Arcade Classic", turq_centered
+      image("static/kong.png", :margin_left => "45%")
+      para link("Add a High Score", white_centered.with(:click, "/newscore"))
+      para link("View Dashboard", white_centered.with(:click, "/dashboard"))
+      para link("Index", white_centered.with(:click, "/"))
     end
   end
 
