@@ -8,6 +8,7 @@ require 'player'
 require 'score'
 require 'machine'
 require 'new_hash'
+require 'high_score_app_helper'
 
 class HighScore < Shoes
   FONT = 'PC Senior'
@@ -20,9 +21,7 @@ class HighScore < Shoes
     background "static/background.png"
     navigation
     content = stack(:margin => 4)
-    Machine.find(:all).each do |machine|
-      high_score_stack(machine, content)
-    end
+    overall_score_stack(content)
   end
 
   def new_score
@@ -50,23 +49,39 @@ class HighScore < Shoes
     navigation
     machines = Machine.find(:all)
     mystack = stack
-    index = -1
+    helper = HighScoreAppHelper.new
     animate(1) do |frame|
       mystack.clear
-      index += 1 if (frame % 3 == 0)
-      index %= machines.size
-      high_score_stack(machines[index], mystack)
+      helper.increment_machine_index_based_on_frame(frame, machines)
+      if helper.display_overall?(frame)
+        overall_score_stack(mystack) 
+      else
+        high_score_stack(machines[helper.index], mystack)
+      end
     end
   end
   
   private
   def high_score_stack(machine, target_stack)
-    target_stack.append{para("#{machine.name} Top 5", :font => FONT, :stroke => red, :size => 20, :align => "center")}
+    target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
     Score.top_five_scores_by_machine_id(machine.id).each do |score| 
       target_stack.append do
           para "#{score.player.name} - #{score.score}", turq_centered
       end
     end
+  end
+
+  def overall_score_stack(target_stack)
+    target_stack.append{para("Overall High Scores", red_centered.with(:size, 20))}
+    Player.find(:all).each do |player|
+      target_stack.append do
+        para "#{player.name} - #{player.overall_score}", turq_centered
+      end
+    end
+  end
+
+  def red_centered
+    {:font => FONT, :stroke => red, :align => "center"}
   end
 
   def turq_centered
