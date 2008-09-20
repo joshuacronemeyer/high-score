@@ -44,6 +44,26 @@ class HighScore < Shoes
     end
   end
 
+  def new_vs_score
+    background "static/background.png"
+    navigation
+    stack :width => "50%", :margin_left => 10, :margin_top => 10 do
+        para "Winner:", turq_centered
+        para "LOSER!:", turq_centered
+        para "Machine:", turq_centered
+    end
+    stack :width => "-50%", :margin => 10 do
+        @winner = edit_line
+        @loser = edit_line
+        @vs_game_name = edit_line
+        @vs_submit = button "Submit Your Score" 
+    end
+    @vs_submit.click do
+      VsScore.add_score(@winner.text, @loser.text, @vs_game_name.text)
+      visit "/" 
+    end
+  end
+
   def dashboard
     background "static/background.png"
     navigation

@@ -3,7 +3,8 @@ require 'active_record'
 class Player < ActiveRecord::Base
   TOP_SCORE = 20#points
   has_many :score
-  
+  has_many :grudge_match
+
   def overall_score
     overall_score = 0
     Machine.find(:all).each do |machine|
