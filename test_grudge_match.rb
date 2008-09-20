@@ -13,5 +13,16 @@ class TestGrudgeMatch < Test::Unit::TestCase
     assert_equal(1,GrudgeMatch.find(:all).size)
     Database.disconnect
   end
-
+  def test_only_one_grudge_match_per_player_per_game
+    Database.test_connect
+    GrudgeMatch.add_score("JC", "EvilJC", "Galaga")
+    begin
+      GrudgeMatch.add_score("EvilJC", "LB", "Galaga")
+      fail
+    rescue
+      #stuff
+    ensure
+      Database.disconnect
+    end
+  end
 end

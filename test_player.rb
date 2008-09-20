@@ -23,4 +23,12 @@ class TestPlayer < Test::Unit::TestCase
     assert_equal(20, Player.find_by_name("JC").overall_score)
     Database.disconnect
   end
+
+  def test_scoring_for_grudge_matches
+    Database.test_connect
+    GrudgeMatch.add_score("JC", "WWJD", "TMNT")
+    assert_equal(20, Player.find_by_name("JC").overall_score)
+    assert_equal(17, Player.find_by_name("WWJD").overall_score)
+    Database.disconnect
+  end
 end
