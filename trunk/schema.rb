@@ -21,3 +21,13 @@ ActiveRecord::Schema.define do
     t.column :name, :string
   end
 end
+
+ActiveRecord::Schema.define do
+  create_table 'grudge_matches', :force => true do |t|
+    t.column :winner_id, :integer
+    t.column :loser_id, :integer
+    t.column :machine_id, :integer
+  end
+end
+
+
