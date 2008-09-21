@@ -1,4 +1,7 @@
 require 'active_record'
+require 'machine'
+require 'grudge_match'
+require 'score'
 
 class Player < ActiveRecord::Base
   TOP_SCORE = 20
