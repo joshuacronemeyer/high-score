@@ -65,7 +65,6 @@ class HighScore < Shoes
     end
   end
 
-
   def new_vs_score
     background "static/background.png"
     navigation
@@ -106,10 +105,19 @@ class HighScore < Shoes
   private
   def high_score_stack(machine, target_stack)
     return if machine.nil?
-    target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
-    Score.top_five_scores_by_machine_id(machine.id).each do |score| 
-      target_stack.append do
+    if machine.is_grudge_match_machine?
+      target_stack.append{para("#{machine.name} Grudge Matches", red_centered.with(:size,20))}
+      machine.grudge_match.each do |match| 
+        target_stack.append do
+          para "W: #{match.winner.name} - L: #{match.loser.name}", turq_centered
+        end
+      end
+    else 
+      target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
+      Score.top_five_scores_by_machine_id(machine.id).each do |score| 
+        target_stack.append do
           para "#{score.player.name} - #{score.score}", turq_centered
+        end
       end
     end
   end
