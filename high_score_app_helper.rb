@@ -14,7 +14,8 @@ class HighScoreAppHelper
   end
 
   def increment_machine_index_based_on_frame(frame, machines)
-    @index += 1 if (frame % SECONDS_PER_SLIDE == 0)
+    return 0 if machines.size == 0
+    @index += 1 if ((frame % SECONDS_PER_SLIDE) == 0)
     @index %= machines.size
   end
 end

@@ -15,6 +15,7 @@ class HighScore < Shoes
   url "/", :index
   url "/newscore", :new_score
   url "/dashboard", :dashboard
+  url "/newgrudge", :new_grudge
   Database.test_connect
   
   def index
@@ -43,6 +44,27 @@ class HighScore < Shoes
       visit "/" 
     end
   end
+
+  def new_grudge
+    background "static/background.png"
+    navigation
+    stack :width => "50%", :margin_left => 10, :margin_top => 10 do
+        para "Winner:", turq_centered
+        para "Loser:", turq_centered
+        para "Machine:", turq_centered
+    end
+    stack :width => "-50%", :margin => 10 do
+        @winner_name = edit_line
+        @loser_name = edit_line
+        @grudge_machine = edit_line
+        @submit = button "Submit Your Match" 
+    end
+    @submit.click do
+      GrudgeMatch.add_score(@winner_name.text, @loser_name.text, @grudge_machine.text)
+      visit "/" 
+    end
+  end
+
 
   def new_vs_score
     background "static/background.png"
@@ -83,6 +105,7 @@ class HighScore < Shoes
   
   private
   def high_score_stack(machine, target_stack)
+    return if machine.nil?
     target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
     Score.top_five_scores_by_machine_id(machine.id).each do |score| 
       target_stack.append do
@@ -92,10 +115,10 @@ class HighScore < Shoes
   end
 
   def overall_score_stack(target_stack)
-    target_stack.append{para("Overall High Scores", red_centered.with(:size, 20))}
-    Player.find(:all).each do |player|
-      target_stack.append do
-        para "#{player.name} - #{player.overall_score}", turq_centered
+    target_stack.append do
+      para("Overall High Scores", red_centered.with(:size, 20))
+      Player.find(:all).each do |player|
+        para("#{player.name} - #{player.overall_score}", turq_centered)
       end
     end
   end
@@ -118,10 +141,9 @@ class HighScore < Shoes
       banner "MonkeyFarm Arcade Classic", turq_centered
       image("static/kong.png", :margin_left => "45%")
       para link("Add a High Score", white_centered.with(:click, "/newscore"))
+      para link("Add a Grudge Match Score", white_centered.with(:click, "/newgrudge"))
       para link("View Dashboard", white_centered.with(:click, "/dashboard"))
-      para link("Index", white_centered.with(:click, "/"))
     end
   end
-
 end
 Shoes.app :width => 1024, :height => 768, :title => 'high score'
