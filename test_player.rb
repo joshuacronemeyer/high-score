@@ -19,6 +19,17 @@ class TestPlayer < Test::Unit::TestCase
     assert_equal(20, Player.find_by_name("JC").overall_score)
     Score.add_high_score("JC", "Galaga", 20000)
     assert_equal(40, Player.find_by_name("JC").overall_score)
+  
+  end
+
+  def test_did_not_already_play
+    p = Player.new(:name => 'fanullone')
+    assert(!p.already_played_this_game?("asdf"))
+  end
+
+  def test_already_played_this
+    GrudgeMatch.add_score("hj","hjk","asdf")
+    assert(Player.find_by_name("hj").already_played_this_game?("asdf"))
   end
 
   def test_calculating_lots_of_scores
