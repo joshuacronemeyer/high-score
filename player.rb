@@ -33,6 +33,16 @@ class Player < ActiveRecord::Base
     return false
   end
 
+  def self.sorted_overall_scores()
+    players_by_scores = Player.find(:all)
+    players_by_scores = players_by_scores.sort
+    return players_by_scores.reverse
+  end
+  
+  def <=> (other)
+    return self.overall_score <=> other.overall_score
+  end
+
   private
   def sorted_top_scoreable_scores(machine_id)
     Score.find_all_by_machine_id(machine_id, :order => "score").reverse[0..TOP_SCORE-1]

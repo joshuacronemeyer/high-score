@@ -39,6 +39,7 @@ class TestPlayer < Test::Unit::TestCase
       assert_equal("asdf - 20", output)
     end
   end
+
   def test_only_one_score_per_machine
     Score.add_high_score("JC", "WWJD", 77777)
     Score.add_high_score("JC", "WWJD", 77778)
@@ -50,4 +51,18 @@ class TestPlayer < Test::Unit::TestCase
     assert_equal(20, Player.find_by_name("JC").overall_score)
     assert_equal(17, Player.find_by_name("WWJD").overall_score)
   end
+  
+  def test_sorted_overall
+    Score.add_high_score("JC", "WWJD", 77777)
+    Score.add_high_score("DJ", "WWJD", 77779)
+    Score.add_high_score("JD", "WWJD", 77778)
+    players = Player.sorted_overall_scores()
+    assert_equal("DJ", players.first.name)
+    assert_equal("JC", players.last.name)
+    Score.add_high_score("JC", "WW2", 234)
+    players = Player.sorted_overall_scores()
+    assert_equal("JC", players.first.name)
+  end
+
+
 end

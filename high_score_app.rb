@@ -125,7 +125,7 @@ class HighScore < Shoes
   def overall_score_stack(target_stack)
     target_stack.append do
       para("Overall High Scores", red_centered.with(:size, 20))
-      Player.find(:all).each do |player|
+      Player.sorted_overall_scores.each do |player|
         para("#{player.name} - #{player.overall_score}", turq_centered)
       end
     end
