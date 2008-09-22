@@ -25,6 +25,14 @@ class Player < ActiveRecord::Base
     return overall_score + grudge_match_scores
   end
 
+  def already_played_this_game?(machine)
+    matches = self.wins + self.losses
+    matches.each do |match|
+      return true if match.machine.name == machine
+    end
+    return false
+  end
+
   private
   def sorted_top_scoreable_scores(machine_id)
     Score.find_all_by_machine_id(machine_id, :order => "score").reverse[0..TOP_SCORE-1]
