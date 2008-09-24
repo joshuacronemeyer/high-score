@@ -19,14 +19,14 @@ class HighScore < Shoes
   Database.test_connect
   
   def index
-    background "static/background.png"
+    starfield_background
     navigation
     content = stack(:margin => 4)
     overall_score_stack(content)
   end
 
   def new_score
-    background "static/background.png"
+    starfield_background
     navigation
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
         para "Name:", turq_centered
@@ -46,7 +46,7 @@ class HighScore < Shoes
   end
 
   def new_grudge
-    background "static/background.png"
+    starfield_background
     navigation
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
         para "Winner:", turq_centered
@@ -66,7 +66,7 @@ class HighScore < Shoes
   end
 
   def new_vs_score
-    background "static/background.png"
+    starfield_background
     navigation
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
         para "Winner:", turq_centered
@@ -86,12 +86,12 @@ class HighScore < Shoes
   end
 
   def dashboard
-    background "static/background.png"
+    starfield_background
     navigation
     machines = Machine.find(:all)
     mystack = stack
     helper = HighScoreAppHelper.new
-    animate(1) do |frame|
+    every(1) do |frame|
       mystack.clear
       helper.increment_machine_index_based_on_frame(frame, machines)
       if helper.display_overall?(frame)
@@ -153,5 +153,33 @@ class HighScore < Shoes
       para link("View Dashboard", white_centered.with(:click, "/dashboard"))
     end
   end
+  
+  def starfield_background
+    #background "static/background.png"
+    background black
+    init_starfield
+    animate_starfield
+  end
+  
+  
+  def init_starfield
+    @starfield = Array.new
+    50.times do |index|
+      fill rgb rand(255), rand(255), rand(255)
+      @starfield[index] = oval :top=> rand(768), :left => rand(1024), :radius => 2
+    end  
+  end
+  
+  def animate_starfield
+    animate(12) do
+      @starfield.each do |star|
+        if(star.top > 768) 
+          star.left = rand(1024) 
+        end
+        star.top = star.top%768+5
+      end
+    end
+  end
+  
 end
 Shoes.app :width => 1024, :height => 768, :title => 'high score'
