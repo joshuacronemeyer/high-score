@@ -126,7 +126,7 @@ class HighScore < Shoes
     target_stack.append do
       para("Overall High Scores", red_centered.with(:size, 20))
       Player.sorted_overall_scores.each do |player|
-        para("#{player.name} - #{player.overall_score}", turq_centered)
+        para("#{player.name} - #{player.overall_score} - #{player.ppg} ppg", turq_centered)
       end
     end
   end
@@ -146,6 +146,11 @@ class HighScore < Shoes
 
   def navigation
     stack do
+      #para "HI SCORE", red_centered
+      #top = Player.sorted_overall_scores[0]
+      #if (!top.nil) then 
+      #  para "#{top.overall_score}", red_centered 
+      #end
       banner "MonkeyFarm Arcade Classic", turq_centered
       image("static/kong.png", :margin_left => "45%")
       para link("Add a High Score", white_centered.with(:click, "/newscore"))
@@ -155,7 +160,6 @@ class HighScore < Shoes
   end
   
   def starfield_background
-    #background "static/background.png"
     background black
     init_starfield
     animate_starfield
@@ -173,9 +177,11 @@ class HighScore < Shoes
   def animate_starfield
     animate(12) do
       @starfield.each do |star|
+        #at the bottom of the screen, pick a new spot on top
         if(star.top > 768) 
           star.left = rand(1024) 
         end
+        #fall
         star.top = star.top%768+5
       end
     end
