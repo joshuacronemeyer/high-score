@@ -39,6 +39,10 @@ class Player < ActiveRecord::Base
     return players_by_scores.reverse
   end
   
+  def ppg
+    overall_score / (score.size + wins.size + losses.size)
+  end
+  
   def <=> (other)
     return self.overall_score <=> other.overall_score
   end
