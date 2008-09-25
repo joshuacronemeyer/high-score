@@ -169,8 +169,10 @@ class HighScore < Shoes
   def init_starfield
     @starfield = Array.new
     50.times do |index|
-      fill rgb rand(255), rand(255), rand(255)
-      @starfield[index] = oval :top=> rand(768), :left => rand(1024), :radius => 2
+      distance = (rand(3)+rand(3)+rand(3)+2)
+      #brighter stars are closer, faster
+      fill rgb bright(distance), bright(distance), bright(distance)
+      @starfield[index] = oval :top=> rand(parent.height), :left => rand(parent.width), :radius => 2, :velocity=>distance
     end  
   end
   
@@ -178,13 +180,18 @@ class HighScore < Shoes
     animate(12) do
       @starfield.each do |star|
         #at the bottom of the screen, pick a new spot on top
-        if(star.top > 768) 
-          star.left = rand(1024) 
+        if(star.top > parent.height) 
+          star.left = rand(parent.width) 
         end
         #fall
-        star.top = star.top%768+5
+        star.top = star.top%parent.height+star.style[:velocity]
+        #twinkle
       end
     end
+  end
+  
+  def bright(distance)
+    (rand(222)+32)*distance/10
   end
   
 end
