@@ -9,9 +9,9 @@ class Score < ActiveRecord::Base
   end
   
   def self.add_high_score(player, machine, score)
-    player = Player.find_or_create_by_name(player)
+    player = Player.find_or_create_by_name(player.upcase)
     score = Score.new(:score => score)
-    machine = Machine.find_or_create_by_name(machine)
+    machine = Machine.find_or_create_by_name(machine.upcase)
     score.save
     player.score << score
     machine.score << score

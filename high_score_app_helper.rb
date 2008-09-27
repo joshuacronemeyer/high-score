@@ -1,6 +1,6 @@
 #mainly have this class so we can test these methods away from the shoes stuff.
 class HighScoreAppHelper
-  SECONDS_PER_SLIDE = 6 #must be multiple of 2
+  SECONDS_PER_SLIDE = 12 #must be multiple of 2
 
   attr_accessor :index
   def initialize
