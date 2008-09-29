@@ -1,0 +1,15 @@
+#Highlights from the first Monkey Farm Arcade Tournament.
+
+= Results =
+
+http://picasaweb.google.com/joshuacronemeyer/Cuberick?authkey=L_gyN3SijW8#5251280731554989298
+These are the initial overall scoring results.  I hope to have a full breakdown of all scoring in the coming week.
+
+
+= Photos =
+
+If you have links to photos of the event, please share them here. Mine are still on the camera but I'll link here once they are up.
+
+= Raw Data =
+
+If you can't wait for the full breakdown and you are comfortable with sqlite you can directly grab the relational data here.
