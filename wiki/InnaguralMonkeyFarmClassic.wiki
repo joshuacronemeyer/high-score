@@ -1,16 +1,16 @@
 = Highlights from the first Monkey Farm Arcade Tournament. =
 
-= Results =
+== Results ==
 
 http://lh3.ggpht.com/joshuacronemeyer/SOFFJBs9CXI/AAAAAAAAAUI/AKsPeiIgObo/s400/Picture%202.png
 
 These are the initial overall scoring results.  I hope to have a full breakdown of all scoring in the coming week.
 
 
-= Photos =
+== Photos ==
 
 If you have links to photos of the event, please share them here. Mine are still on the camera but I'll link here once they are up.
 
-= Raw Data =
+== Raw Data ==
 
 If you can't wait for the full breakdown and you are comfortable with sqlite you can directly grab the relational data here http://high-score.googlecode.com/files/highscores. Note.. this file is a bit out of date and doesn't have a few of hippie's scores.
