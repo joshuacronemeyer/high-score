@@ -13,4 +13,4 @@ If you have links to photos of the event, please share them here. Mine are still
 
 = Raw Data =
 
-If you can't wait for the full breakdown and you are comfortable with sqlite you can directly grab the relational data here.
+If you can't wait for the full breakdown and you are comfortable with sqlite you can directly grab the relational data here http://high-score.googlecode.com/files/highscores.
