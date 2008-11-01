@@ -8,10 +8,10 @@ class GrudgeMatch < ActiveRecord::Base
   belongs_to :loser, :foreign_key => 'loser_id', :class_name => 'Player'
 
   def self.add_score(winner, loser, machine)
-    winner = Player.find_or_create_by_name(winner.upcase)
-    loser = Player.find_or_create_by_name(loser.upcase)
-    raise "already played" if (winner.already_played_this_game?(machine.upcase))
-    machine = Machine.find_or_create_by_name(machine.upcase)
+    winner = Player.find_or_create_by_name(winner)
+    loser = Player.find_or_create_by_name(loser)
+    raise "already played" if (winner.already_played_this_game?(machine))
+    machine = Machine.find_or_create_by_name(machine)
     grudge_match = GrudgeMatch.new :winner => winner, :loser => loser, :machine => machine
     grudge_match.save
   end  
