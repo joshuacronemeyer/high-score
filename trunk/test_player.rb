@@ -13,12 +13,6 @@ class TestPlayer < Test::Unit::TestCase
   def teardown
     Database.disconnect
   end
-  
-  def test_player_duplicate_isnt_created_due_to_case
-    Score.add_high_score("jc","wwjd",77)
-    Score.add_high_score("Jc","WWjd",777)
-    assert_equal(1,Player.find(:all).size)
-  end
 
   def test_score_calculated_correctly
     Score.add_high_score("JC", "WWJD", 77777)
@@ -35,14 +29,14 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_already_played_this
     GrudgeMatch.add_score("hj","hjk","asdf")
-    assert(Player.find_by_name("HJ").already_played_this_game?("ASDF"))
+    assert(Player.find_by_name("hj").already_played_this_game?("asdf"))
   end
 
   def test_calculating_lots_of_scores
     Score.add_high_score("asdf", "adf", 3)
     Player.find(:all).each do |player|
       output = "#{player.name} - #{player.overall_score}"
-      assert_equal("ASDF - 20", output)
+      assert_equal("asdf - 20", output)
     end
   end
 
