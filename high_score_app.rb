@@ -1,3 +1,5 @@
+#!/usr/bin/env open -a Shoes.app
+
 Shoes.setup do
   gem 'activesupport'
   gem 'activerecord'
@@ -30,19 +32,19 @@ class HighScore < Shoes
     navigation
     helper = HighScoreAppHelper.new
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
-        para "Name:", turq_centered
-        para "Machine:", turq_centered
-        para "Score:", turq_centered
+      para "Name:", turq_centered
+      para "Machine:", turq_centered
+      para "Score:", turq_centered
     end
     stack :width => "-50%", :margin => 10 do
-        @player_name = edit_line
-        @game_name = list_box:items => helper.get_machine_names
-        @high_score = edit_line
-        @submit = button "Submit Your Score" 
+      @player_name = edit_line
+      @game_name = list_box:items => helper.get_machine_names
+      @high_score = edit_line
+      @submit = button "Submit Your Score" 
     end
     @submit.click do
       Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
-      visit "/" 
+      visit "/"
     end
   end
 
@@ -150,31 +152,25 @@ class HighScore < Shoes
   end
 
   def red_centered
-    {:font => FONT, :stroke => red, :align => "center"}
+    {:stroke => red, :font => FONT, :align => "center"}
   end
 
   def turq_centered
-    #TODO Could do some cool DSL type stuff so i could type turq.centered
     {:stroke => turquoise, :font => FONT, :align => "center"}
   end
 
   def white_centered
-    {:font => FONT, :stroke => white, :align => "center"}
+    {:stroke => white, :font => FONT, :align => "center"}
   end
 
   def navigation
     stack do
-      #para "HI SCORE", red_centered
-      #top = Player.sorted_overall_scores[0]
-      #if (!top.nil) then 
-      #  para "#{top.overall_score}", red_centered 
-      #end
       banner "MonkeyFarm Arcade Classic", turq_centered
       image("static/kong.png", :margin_left => "45%")
-      para link("Add a High Score", white_centered.with(:click, "/newscore"))
-      para link("Add a Grudge Match Score", white_centered.with(:click, "/newgrudge"))
-      para link("View Dashboard", white_centered.with(:click, "/dashboard"))
-      para link("Add Machine", white_centered.with(:click, "/newmachine"))
+      para link("Add a High Score", :click => "/newscore"), white_centered
+      para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
+      para link("View Dashboard", :click => "/dashboard"), white_centered
+      para link("Add Machine", :click => "/newmachine"), white_centered
     end
   end
   
