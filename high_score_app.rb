@@ -1,4 +1,3 @@
-#!/usr/bin/env open -a Shoes.app
 Shoes.setup do
   gem 'activesupport'
   gem 'activerecord'
@@ -16,6 +15,7 @@ class HighScore < Shoes
   url "/newscore", :new_score
   url "/dashboard", :dashboard
   url "/newgrudge", :new_grudge
+  url "/newmachine", :new_machine
   Database.test_connect
   
   def index
@@ -28,6 +28,7 @@ class HighScore < Shoes
   def new_score
     starfield_background
     navigation
+    helper = HighScoreAppHelper.new
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
         para "Name:", turq_centered
         para "Machine:", turq_centered
@@ -35,12 +36,29 @@ class HighScore < Shoes
     end
     stack :width => "-50%", :margin => 10 do
         @player_name = edit_line
-        @game_name = edit_line
+        @game_name = list_box:items => helper.get_machine_names
         @high_score = edit_line
         @submit = button "Submit Your Score" 
     end
     @submit.click do
       Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
+      visit "/" 
+    end
+  end
+
+  def new_machine
+    starfield_background
+    navigation
+    stack :width => "50%", :margin_left => 10, :margin_top => 10 do
+      para "Machine:", turq_centered
+    end
+    stack :width => "-50%", :margin => 10 do
+        @game_name = edit_line
+        @submit = button "Save" 
+    end
+    @submit.click do
+      machine = Machine.create(:name => @game_name.text)
+      machine.save
       visit "/" 
     end
   end
@@ -156,6 +174,7 @@ class HighScore < Shoes
       para link("Add a High Score", white_centered.with(:click, "/newscore"))
       para link("Add a Grudge Match Score", white_centered.with(:click, "/newgrudge"))
       para link("View Dashboard", white_centered.with(:click, "/dashboard"))
+      para link("Add Machine", white_centered.with(:click, "/newmachine"))
     end
   end
   

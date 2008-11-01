@@ -1,4 +1,6 @@
 #mainly have this class so we can test these methods away from the shoes stuff.
+require 'machine'
+
 class HighScoreAppHelper
   SECONDS_PER_SLIDE = 12 #must be multiple of 2
 
@@ -17,5 +19,14 @@ class HighScoreAppHelper
     return 0 if machines.size == 0
     @index += 1 if ((frame % SECONDS_PER_SLIDE) == 0)
     @index %= machines.size
+  end
+  
+  def get_machine_names
+    machineNames = []
+    machines = Machine.all(:select => 'name')
+    machines.each do |machine|
+      machineNames << machine.name
+    end
+    return machineNames
   end
 end
