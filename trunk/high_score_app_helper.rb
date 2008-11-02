@@ -29,4 +29,13 @@ class HighScoreAppHelper
     end
     return machineNames
   end
+  
+  def get_player_names
+    playerNames = []
+    players = Player.all(:select => 'name')
+    players.each do |player|
+      playerNames << player.name
+    end
+    return playerNames
+  end
 end
