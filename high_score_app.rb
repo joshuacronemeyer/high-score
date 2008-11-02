@@ -18,6 +18,8 @@ class HighScore < Shoes
   url "/dashboard", :dashboard
   url "/newgrudge", :new_grudge
   url "/newmachine", :new_machine
+  url "/newplayer", :new_player
+  url "/machines", :machines
   Database.test_connect
   
   def index
@@ -31,17 +33,21 @@ class HighScore < Shoes
     starfield_background
     navigation
     helper = HighScoreAppHelper.new
-    stack :width => "50%", :margin_left => 10, :margin_top => 10 do
-      para "Name:", turq_centered
-      para "Machine:", turq_centered
-      para "Score:", turq_centered
-    end
-    stack :width => "-50%", :margin => 10 do
-      @player_name = edit_line
-      @game_name = list_box:items => helper.get_machine_names
-      @high_score = edit_line
-      @submit = button "Submit Your Score" 
-    end
+    @mainStack.append {
+      stack :width => "80%", :top => 200 do
+        stack :width => "20%", :margin_left => 10, :margin_top => 10, :top => 20 do
+            para "Name:", turq_centered
+            para "Machine:", turq_centered
+            para "Score:", turq_centered
+        end
+        stack :width => "80%", :margin_left => 10, :margin_top => 10, :top => 20 do
+            @player_name = list_box:items => helper.get_player_names
+            @game_name = list_box:items => helper.get_machine_names
+            @high_score = edit_line
+            @submit = button "Submit Your Score" 
+          end
+        end
+      }
     @submit.click do
       Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
       visit "/"
@@ -51,16 +57,41 @@ class HighScore < Shoes
   def new_machine
     starfield_background
     navigation
-    stack :width => "50%", :margin_left => 10, :margin_top => 10 do
-      para "Machine:", turq_centered
-    end
-    stack :width => "-50%", :margin => 10 do
-        @game_name = edit_line
-        @submit = button "Save" 
-    end
+    @mainStack.append {
+      stack :width => "80%", :top => 200 do
+        stack :width => "20%", :margin_top => 10, :top => 20 do
+          para "Machine:", turq_centered
+        end
+        stack :width => "80%", :margin_top => 10, :top => 20 do
+          @game_name = edit_line
+          @submit = button "Save" 
+        end
+      end
+    }
     @submit.click do
       machine = Machine.create(:name => @game_name.text)
       machine.save
+      visit "/" 
+    end
+  end
+  
+  def new_player
+    starfield_background
+    navigation
+    @mainStack.append {
+      stack :width => "80%", :top => 200 do
+        stack :width => "20%", :margin_top => 10, :top => 20 do
+          para "Player Name:", turq_centered
+        end
+        stack :width => "80%", :margin_top => 10, :top => 20 do
+          @player_name = edit_line
+          @submit = button "Save" 
+        end
+      end
+    }
+    @submit.click do
+      player = Player.create(:name => @player_name.text)
+      player.save
       visit "/" 
     end
   end
@@ -101,6 +132,27 @@ class HighScore < Shoes
     end
     @vs_submit.click do
       VsScore.add_score(@winner.text, @loser.text, @vs_game_name.text)
+      visit "/" 
+    end
+  end
+  
+  def machines
+    starfield_background
+    navigation
+    @mainStack.append {
+      stack :width => "50%", :top => 200, :margin_left => 10, :margin_top => 10 do
+          para "Machines:", turq_centered
+          machines = Machine.all().each do |machine|
+            stack do
+              para machine.name, red_centered
+                machine.score.each do |score|
+                  para "#{score.player.name} - #{score.score}", turq_centered
+                end
+            end
+          end
+        end
+      }
+    @submit.click do
       visit "/" 
     end
   end
@@ -164,13 +216,17 @@ class HighScore < Shoes
   end
 
   def navigation
-    stack do
+    @mainStack = stack do
       banner "MonkeyFarm Arcade Classic", turq_centered
       image("static/kong.png", :margin_left => "45%")
-      para link("Add a High Score", :click => "/newscore"), white_centered
-      para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
-      para link("View Dashboard", :click => "/dashboard"), white_centered
-      para link("Add Machine", :click => "/newmachine"), white_centered
+      stack :width => "20%", :top => 200 do
+        para link("Add a High Score", :click => "/newscore"), white_centered
+        para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
+        para link("View Dashboard", :click => "/dashboard"), white_centered
+        para link("Add Machine", :click => "/newmachine"), white_centered
+        para link("Add Player", :click => "/newplayer"), white_centered
+        para link("View Machines", :click => "/machines"), white_centered
+      end
     end
   end
   
