@@ -10,8 +10,8 @@ class Database
   def self.connect    
     ActiveRecord::Base.establish_connection(
       :adapter => 'sqlite3',
-      :dbfile => ':memory:'
-      #:dbfile => 'highscores' 
+      #:dbfile => ':memory:'
+      :dbfile => 'highscores' 
     ) unless ActiveRecord::Base.connected?
   end
   

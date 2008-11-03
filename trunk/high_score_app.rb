@@ -20,7 +20,7 @@ class HighScore < Shoes
   url "/newmachine", :new_machine
   url "/newplayer", :new_player
   url "/machines", :machines
-  Database.test_connect
+  Database.connect
   
   def index
     starfield_background
@@ -30,44 +30,40 @@ class HighScore < Shoes
   end
 
   def new_score
-    starfield_background
-    navigation
-    helper = HighScoreAppHelper.new
-    @mainStack.append {
-      stack :width => "80%", :top => 200 do
-        stack :width => "20%", :margin_left => 10, :margin_top => 10, :top => 20 do
-            para "Name:", turq_centered
-            para "Machine:", turq_centered
-            para "Score:", turq_centered
-        end
-        stack :width => "80%", :margin_left => 10, :margin_top => 10, :top => 20 do
-            @player_name = list_box:items => helper.get_player_names
-            @game_name = list_box:items => helper.get_machine_names
-            @high_score = edit_line
-            @submit = button "Submit Your Score" 
-          end
-        end
-      }
-    @submit.click do
-      Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
-      visit "/"
+    window :height => 200, :width => 500 do
+      background black
+      helper = HighScoreAppHelper.new
+      stack :width => "30%", :margin_left => 5, :margin_top => 5 do
+        para "Name:", {:stroke => turquoise, :font => FONT, :align => "center"}
+        para "Machine:", {:stroke => turquoise, :font => FONT, :align => "center"}
+        para "Score:", {:stroke => turquoise, :font => FONT, :align => "center"}
+      end
+      stack :width => "70%", :margin_left => 5, :margin_top => 5 do
+        @player_name = list_box :items => helper.get_player_names
+        @game_name = list_box :items => helper.get_machine_names
+        @high_score = edit_line
+        @submit = button "Submit Your Score" 
+      end
+      @submit.click do
+        Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
+        close    
+      end
     end
+    visit "/"
   end
 
   def new_machine
     starfield_background
     navigation
-    @mainStack.append {
-      stack :width => "80%", :top => 200 do
-        stack :width => "20%", :margin_top => 10, :top => 20 do
-          para "Machine:", turq_centered
-        end
-        stack :width => "80%", :margin_top => 10, :top => 20 do
-          @game_name = edit_line
-          @submit = button "Save" 
-        end
+    stack :width => "80%", :top => 200 do
+      stack :width => "20%", :margin_top => 10, :top => 20 do
+        para "Machine:", turq_centered
       end
-    }
+      stack :width => "80%", :margin_top => 10, :top => 20 do
+        @game_name = edit_line
+        @submit = button "Save" 
+      end
+    end
     @submit.click do
       machine = Machine.create(:name => @game_name.text)
       machine.save
@@ -78,17 +74,15 @@ class HighScore < Shoes
   def new_player
     starfield_background
     navigation
-    @mainStack.append {
-      stack :width => "80%", :top => 200 do
-        stack :width => "20%", :margin_top => 10, :top => 20 do
-          para "Player Name:", turq_centered
-        end
-        stack :width => "80%", :margin_top => 10, :top => 20 do
-          @player_name = edit_line
-          @submit = button "Save" 
-        end
+    stack :width => "80%", :top => 200 do
+      stack :width => "20%", :margin_top => 10, :top => 20 do
+        para "Player Name:", turq_centered
       end
-    }
+      stack :width => "80%", :margin_top => 10, :top => 20 do
+        @player_name = edit_line
+        @submit = button "Save" 
+      end
+    end
     @submit.click do
       player = Player.create(:name => @player_name.text)
       player.save
@@ -139,21 +133,14 @@ class HighScore < Shoes
   def machines
     starfield_background
     navigation
-    @mainStack.append {
-      stack :width => "50%", :top => 200, :margin_left => 10, :margin_top => 10 do
-          para "Machines:", turq_centered
-          machines = Machine.all().each do |machine|
-            stack do
-              para machine.name, red_centered
-                machine.score.each do |score|
-                  para "#{score.player.name} - #{score.score}", turq_centered
-                end
-            end
-          end
+    stack :margin_left => 10, :margin_top => 10 do
+      para "Machines:", turq_centered
+      machines = Machine.all().each do |machine|
+        para machine.name, red_centered
+        machine.score.each do |score|
+          para "#{score.player.name} - #{score.score}", turq_centered
         end
-      }
-    @submit.click do
-      visit "/" 
+      end
     end
   end
 
@@ -216,17 +203,15 @@ class HighScore < Shoes
   end
 
   def navigation
-    @mainStack = stack do
+    stack do
       banner "MonkeyFarm Arcade Classic", turq_centered
       image("static/kong.png", :margin_left => "45%")
-      stack :width => "20%", :top => 200 do
-        para link("Add a High Score", :click => "/newscore"), white_centered
-        para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
-        para link("View Dashboard", :click => "/dashboard"), white_centered
-        para link("Add Machine", :click => "/newmachine"), white_centered
-        para link("Add Player", :click => "/newplayer"), white_centered
-        para link("View Machines", :click => "/machines"), white_centered
-      end
+      para link("Add a High Score", :click => "/newscore"), white_centered
+      para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
+      para link("View Dashboard", :click => "/dashboard"), white_centered
+      para link("Add Machine", :click => "/newmachine"), white_centered
+      para link("Add Player", :click => "/newplayer"), white_centered
+      para link("View Machines", :click => "/machines"), white_centered
     end
   end
   
