@@ -40,7 +40,12 @@ class Player < ActiveRecord::Base
   end
   
   def ppg
-    overall_score / (score.size + wins.size + losses.size)
+    number_of_games = (score.size + wins.size + losses.size)
+    if number_of_games > 0
+      return overall_score / number_of_games 
+    else
+      return 0
+    end
   end
   
   def <=> (other)
