@@ -20,7 +20,7 @@ class HighScore < Shoes
   url "/newmachine", :new_machine
   url "/newplayer", :new_player
   url "/machines", :machines
-  Database.connect
+  Database.test_connect
   
   def index
     starfield_background
@@ -53,41 +53,41 @@ class HighScore < Shoes
   end
 
   def new_machine
-    starfield_background
-    navigation
-    stack :width => "80%", :top => 200 do
-      stack :width => "20%", :margin_top => 10, :top => 20 do
-        para "Machine:", turq_centered
+    window :height => 200, :width => 500 do
+      background black
+      stack :width => "30%", :margin_top => 5, :top => 5 do
+        para "Machine:", {:stroke => turquoise, :font => FONT, :align => "center"}
       end
-      stack :width => "80%", :margin_top => 10, :top => 20 do
+      stack :width => "70%", :margin_top => 5, :top => 5 do
         @game_name = edit_line
         @submit = button "Save" 
       end
+      @submit.click do
+        machine = Machine.create(:name => @game_name.text)
+        machine.save
+        close
+      end
     end
-    @submit.click do
-      machine = Machine.create(:name => @game_name.text)
-      machine.save
-      visit "/" 
-    end
+    visit "/"
   end
   
   def new_player
-    starfield_background
-    navigation
-    stack :width => "80%", :top => 200 do
-      stack :width => "20%", :margin_top => 10, :top => 20 do
-        para "Player Name:", turq_centered
+    window :height => 200, :width => 500 do
+      background black
+      stack :width => "30%", :margin_top => 5, :top => 5 do
+        para "Player Name:", {:stroke => turquoise, :font => FONT, :align => "center"}
       end
-      stack :width => "80%", :margin_top => 10, :top => 20 do
+      stack :width => "70%", :margin_top => 5, :top => 5 do
         @player_name = edit_line
         @submit = button "Save" 
       end
+      @submit.click do
+        player = Player.create(:name => @player_name.text)
+        player.save
+        close
+      end
     end
-    @submit.click do
-      player = Player.create(:name => @player_name.text)
-      player.save
-      visit "/" 
-    end
+    visit "/" 
   end
 
   def new_grudge
@@ -162,6 +162,19 @@ class HighScore < Shoes
   end
   
   private
+  def red_centered
+    {:stroke => red, :font => FONT, :align => "center"}
+  end
+
+  def turq_centered
+    {:stroke => turquoise, :font => FONT, :align => "center"}
+  end
+
+  def white_centered
+    {:stroke => white, :font => FONT, :align => "center"}
+  end
+
+
   def high_score_stack(machine, target_stack)
     return if machine.nil?
     if machine.is_grudge_match_machine?
@@ -188,18 +201,6 @@ class HighScore < Shoes
         para("#{player.name} - #{player.overall_score} - #{player.ppg} ppg", turq_centered)
       end
     end
-  end
-
-  def red_centered
-    {:stroke => red, :font => FONT, :align => "center"}
-  end
-
-  def turq_centered
-    {:stroke => turquoise, :font => FONT, :align => "center"}
-  end
-
-  def white_centered
-    {:stroke => white, :font => FONT, :align => "center"}
   end
 
   def navigation
