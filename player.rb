@@ -13,7 +13,8 @@ class Player < ActiveRecord::Base
 
   def overall_score
     overall_score = 0
-    Machine.find(:all).each do |machine|
+    machines = self.score.collect{|score| score.machine}.uniq
+    machines.each do |machine|
       high_scores = sorted_top_scoreable_scores(machine.id)
       high_scores.each_with_index do |hi_score, index|
         if (hi_score.player.id == self.id)
@@ -54,7 +55,7 @@ class Player < ActiveRecord::Base
 
   private
   def sorted_top_scoreable_scores(machine_id)
-    Score.find_all_by_machine_id(machine_id, :order => "score").reverse[0..TOP_SCORE-1]
+    Score.find_all_by_machine_id(machine_id, :order => "score", :limit => TOP_SCORE-1).reverse
   end
 
   def grudge_match_scores()

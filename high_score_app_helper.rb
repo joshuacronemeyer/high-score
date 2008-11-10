@@ -2,22 +2,19 @@
 require 'machine'
 
 class HighScoreAppHelper
-  SECONDS_PER_SLIDE = 12 #must be multiple of 2
 
   attr_accessor :index
   def initialize
     @index = -1
-    @overall_bit = true
   end
 
   def display_overall?(frame)
-    @overall_bit = !@overall_bit if (frame % (SECONDS_PER_SLIDE/2) == 0)
-    return @overall_bit
+    frame % 2 == 0
   end
 
-  def increment_machine_index_based_on_frame(frame, machines)
-    return 0 if machines.size == 0
-    @index += 1 if ((frame % SECONDS_PER_SLIDE) == 0)
+  def increment_machine_index(machines)
+    @index = 0 if machines.size == 0
+    @index += 1
     @index %= machines.size
   end
   

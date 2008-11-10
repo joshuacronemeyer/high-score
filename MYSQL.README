@@ -1,0 +1,21 @@
+Instructions for getting a mysql db going.
+Connect to db server:
+mysql --user=root mysql
+Create user:
+GRANT ALL PRIVILEGES ON *.* TO 'someuser'@'%';
+Create database:
+CREATE DATABASE highscores;
+
+Now if you just want to connect the app to an empty database you can connect with the test_connect method of database.rb
+If you want to import a database you can run an import like this:
+mysql --user=someuser highscores < importFile
+
+And for creating a mysql dump file from a sqlite3 database you can do this:
+-Export the SQLite database with sqlite3.exe and command parameter ".dump" (Nate, ".export" doesn't exist!), an example :
+sqlite3 mySQLiteDataBase .dump .quit >> myDumpSQLite
+-Adapt the dump to get it compatible for MySQL
+- Replace " (double-quotes) with ` (grave accent)
+- Remove "BEGIN TRANSACTION;" "COMMIT;", and lines related to "sqlite_sequence"
+- Replace "autoincrement" with "auto_increment"
+
+By the way.  There is no significant performance benefit to mysql vs. sqlite (at least when the db is running on the same machine as the app)
