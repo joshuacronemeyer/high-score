@@ -20,7 +20,7 @@ class HighScore < Shoes
   url "/newmachine", :new_machine
   url "/newplayer", :new_player
   url "/machines", :machines
-  Database.test_connect
+  Database.connect
 
   def index
     background black
