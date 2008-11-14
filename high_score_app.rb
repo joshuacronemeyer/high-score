@@ -112,8 +112,8 @@ class HighScore < Shoes
         para "Machines:", @dash.turq_centered
         machines = Machine.all().each do |machine|
           para machine.name, @dash.red_centered
-          machine.score.each do |score|
-            para "#{score.player.name} - #{score.score}", @dash.turq_centered
+          machine.score.sort.each do |score|
+            para "#{score.player.name} - #{score.formatWithComma}", @dash.turq_centered
           end
         end
       end
@@ -233,7 +233,7 @@ class DashboardWindow
       target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
       Score.top_five_scores_by_machine_id(machine.id).each do |score| 
         target_stack.append do
-          para "#{score.player.name} - #{score.score}", turq_centered
+          para "#{score.player.name} - #{score.formatWithComma}", turq_centered
         end
       end
     end
@@ -247,7 +247,7 @@ class DashboardWindow
         para("#{player.name} - #{player.overall_score} - #{player.ppg} ppg", turq_centered)
       end
     end
-    debug("TODO: speed this up.  old average is 3.14 seconds for prod data.  New time is: " + (Time.now - time))
+    #debug("TODO: speed this up.  old average is 3.14 seconds for prod data.  New time is: " + (Time.now - time))
   end
 
   def method_missing(meth, *args, &block)
