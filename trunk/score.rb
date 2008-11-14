@@ -20,7 +20,15 @@ class Score < ActiveRecord::Base
   end
 
   def to_s
-    "player: #{player.name} machine: #{machine.name} score: #{score}"
+    "player: #{player.name} machine: #{machine.name} score: #{score.formatWithComma}"
+  end
+  
+  def formatWithComma
+    return score.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
+end
+  
+  def <=>(o) 
+    return -1 * (self.score <=> o.score )
   end
 
 end
