@@ -142,7 +142,7 @@ class HighScore < Shoes
         para "Players:", @dash.turq_centered
         players = Player.all().each do |player|
           para player.name, @dash.red_centered
-          player.score.each do |score|
+          player.score.sort{|a,b| a.machine.name <=> b.machine.name}.each do |score|
             para "#{score.machine.name} - #{score.formatWithComma}", @dash.turq_centered
           end
         end

@@ -7,7 +7,11 @@ class Player < ActiveRecord::Base
   TOP_SCORE = 20
   GRUDGE_MATCH_WIN = 20
   GRUDGE_MATCH_LOSS = 17
-  has_many :score
+  has_many :score, :finder_sql =>
+    'select id, machine_id, player_id, max(score) as score ' +
+    'from scores ' +
+    'where scores.player_id = #{id} ' +
+    'group by machine_id, player_id'
   has_many :wins, :foreign_key => 'winner_id', :class_name => 'GrudgeMatch'
   has_many :losses, :foreign_key => 'loser_id', :class_name => 'GrudgeMatch'
 
