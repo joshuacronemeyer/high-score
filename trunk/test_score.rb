@@ -8,9 +8,15 @@ require 'machine'
 
 class TestScore < Test::Unit::TestCase
   def test_top_five_scores_by_machine_id_returns_five
-    dummy_results = [0,1,2,3,4,5,6]
-    Score.stubs(:find_all_by_machine_id).returns(dummy_results)
-    assert_equal(5, Score.top_five_scores_by_machine_id(0).size)
+    Database.test_connect
+    Score.add_high_score("AA", "M1", 100);
+    Score.add_high_score("AA", "M1", 200);
+    Score.add_high_score("AB", "M1", 101);
+    Score.add_high_score("AC", "M1", 102);
+    Score.add_high_score("AD", "M1", 300);
+    Score.add_high_score("AE", "M1", 150);
+    
+    assert_equal(5, Score.top_five_scores_by_machine_id(1).size)
   end
 
   def test_add_high_score_creates_record

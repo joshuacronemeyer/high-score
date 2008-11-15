@@ -5,7 +5,9 @@ class Score < ActiveRecord::Base
   belongs_to :player
 
   def self.top_five_scores_by_machine_id(machine_id)
-    return Score.find_all_by_machine_id(machine_id, :order => "score").reverse[0..4] 
+    return Score.find_all_by_machine_id(machine_id, 
+    :select => 'id, machine_id, player_id, max(score) as score',
+    :order => "score desc", :group => 'machine_id, player_id', :limit => 5) 
   end
   
   def self.add_high_score(player, machine, score)
