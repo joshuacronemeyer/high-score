@@ -7,4 +7,9 @@ class Machine < ActiveRecord::Base
   def is_grudge_match_machine?
     return self.grudge_match.size > 0
   end
+  
+  def <=>(o) 
+    return (self.name <=> o.name )
+  end
+  
 end

@@ -20,6 +20,7 @@ class HighScore < Shoes
   url "/newmachine", :new_machine
   url "/newplayer", :new_player
   url "/machines", :machines
+  url "/players", :players
   Database.connect
 
   def index
@@ -38,13 +39,23 @@ class HighScore < Shoes
     end
     stack :width => "70%", :margin_left => 5, :margin_top => 5 do
       @player_name = list_box :items => helper.get_player_names
+      @player_name.choose("<Select>");
       @game_name = list_box :items => helper.get_machine_names
+      @game_name.choose("<Select>");
       @high_score = edit_line
       @submit = button "Submit Your Score" 
+      @submitAnother = button "Submit + Add Another"
     end
     @submit.click do
       Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
       visit "/"
+    end
+    @submitAnother.click do
+      Score.add_high_score(@player_name.text, @game_name.text, @high_score.text)
+      @player_name.choose("<Select>");
+      @game_name.choose("<Select>");
+      @high_score.text = ''
+      submitAnother
     end
   end
 
@@ -110,10 +121,29 @@ class HighScore < Shoes
       image("static/kong.png", :margin_left => "45%")
       stack :margin_left => 10, :margin_top => 10 do
         para "Machines:", @dash.turq_centered
-        machines = Machine.all().each do |machine|
+        machines = Machine.all().sort.each do |machine|
           para machine.name, @dash.red_centered
           machine.score.sort.each do |score|
             para "#{score.player.name} - #{score.formatWithComma}", @dash.turq_centered
+          end
+        end
+      end
+    end
+    visit "/"
+  end
+  
+  def players
+    window :width => 1024, :height => 768, :title => 'high score' do
+      @dash ||= DashboardWindow.new(self)
+      background black
+      banner "MonkeyFarm Arcade Classic", @dash.turq_centered
+      image("static/kong.png", :margin_left => "45%")
+      stack :margin_left => 10, :margin_top => 10 do
+        para "Players:", @dash.turq_centered
+        players = Player.all().each do |player|
+          para player.name, @dash.red_centered
+          player.score.each do |score|
+            para "#{score.machine.name} - #{score.formatWithComma}", @dash.turq_centered
           end
         end
       end
@@ -164,6 +194,7 @@ class HighScore < Shoes
       para link("Add Machine", :click => "/newmachine"), white_centered
       para link("Add Player", :click => "/newplayer"), white_centered
       para link("View Machines", :click => "/machines"), white_centered
+      para link("View Players", :click => "/players"), white_centered
     end
   end
 
