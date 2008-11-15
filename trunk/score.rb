@@ -11,6 +11,7 @@ class Score < ActiveRecord::Base
   end
   
   def self.add_high_score(player, machine, score)
+    return if (player.match(/select/i) || machine.match(/select/i))
     player = Player.find_or_create_by_name(player)
     score = Score.new(:score => score)
     machine = Machine.find_or_create_by_name(machine)

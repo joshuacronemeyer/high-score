@@ -43,6 +43,12 @@ class Player < ActiveRecord::Base
     players_by_scores = players_by_scores.sort
     return players_by_scores.reverse
   end
+
+  def unplayed_games
+      my_machines = []
+      self.score.each{|score| my_machines << score.machine}
+      return Machine.all() - my_machines
+  end
   
   def ppg
     number_of_games = (score.size + wins.size + losses.size)

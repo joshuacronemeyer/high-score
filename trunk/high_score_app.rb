@@ -21,6 +21,7 @@ class HighScore < Shoes
   url "/newplayer", :new_player
   url "/machines", :machines
   url "/players", :players
+  url "/unplayed", :games_i_need_to_play
   Database.connect
 
   def index
@@ -56,6 +57,27 @@ class HighScore < Shoes
       @game_name.choose("<Select>");
       @high_score.text = ''
       submitAnother
+    end
+  end
+
+  def games_i_need_to_play
+    background black
+    navigation
+    helper = HighScoreAppHelper.new
+    stack :width => "30%", :margin_left => 5, :margin_top => 5 do
+      para "Name:", turq_centered
+    end
+    stack :width => "70%", :margin_left => 5, :margin_top => 5 do
+      @player_name = list_box :items => helper.get_player_names
+    end
+    @submit = button "Search"
+    mystack = stack
+    @submit.click do
+      mystack.clear
+      me = Player.find_by_name(@player_name.text)
+      mystack.append do
+        me.unplayed_games.each{|machine| para machine.name, turq_centered}
+      end
     end
   end
 
@@ -160,7 +182,7 @@ class HighScore < Shoes
       machines = Machine.find(:all)
       mystack = stack
       helper = HighScoreAppHelper.new
-      every(5) do |frame|
+      every(10) do |frame|
         mystack.clear
         helper.increment_machine_index(machines)
         if helper.display_overall?(frame)
@@ -190,10 +212,11 @@ class HighScore < Shoes
     stack do
       para link("Add a High Score", :click => "/newscore"), white_centered
       para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
-      para link("View Dashboard", :click => "/dashboard"), white_centered
       para link("Add Machine", :click => "/newmachine"), white_centered
       para link("Add Player", :click => "/newplayer"), white_centered
+      para link("What to Play?", :click => "/unplayed"), white_centered
       para link("View Machines", :click => "/machines"), white_centered
+      para link("View Dashboard", :click => "/dashboard"), white_centered
       para link("View Players", :click => "/players"), white_centered
     end
   end
