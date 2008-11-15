@@ -146,7 +146,7 @@ class HighScore < Shoes
         machines = Machine.all().sort.each do |machine|
           para machine.name, @dash.red_centered
           machine.score.sort.each do |score|
-            para "#{score.player.name} - #{score.formatWithComma}", @dash.turq_centered
+            para "%20s" % "#{score.player.name} - " + "%12s" % "#{score.formatWithComma.to_s}", @dash.turq_centered
           end
         end
       end
@@ -298,10 +298,10 @@ class DashboardWindow
     target_stack.append do
       para("Overall High Scores", red_centered.with(:size, 20))
       Player.sorted_overall_scores.each do |player|
-        para("#{player.name} - #{player.overall_score} - #{player.ppg} ppg", turq_centered)
+        para("#{player.name} - " + "%3d" % player.overall_score + " - " + "%2.1f" % player.ppg + " ppg", turq_centered)
       end
     end
-    #debug("TODO: speed this up.  old average is 3.14 seconds for prod data.  New time is: " + (Time.now - time))
+    debug("TODO: speed this up.  old average is 3.14 seconds for prod data.  New time is: " + (Time.now - time).to_s)
   end
 
   def method_missing(meth, *args, &block)
