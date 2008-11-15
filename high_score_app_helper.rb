@@ -19,8 +19,8 @@ class HighScoreAppHelper
   end
   
   def get_machine_names
-    machineNames = []
-    machines = Machine.all(:select => 'name')
+    machineNames = ["<Select>"]
+    machines = Machine.all(:select => 'name').sort
     machines.each do |machine|
       machineNames << machine.name
     end
@@ -28,7 +28,7 @@ class HighScoreAppHelper
   end
   
   def get_player_names
-    playerNames = []
+    playerNames = ["<Select>"]
     players = Player.all(:select => 'name')
     players.each do |player|
       playerNames << player.name
