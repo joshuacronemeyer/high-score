@@ -6,7 +6,7 @@ require 'score'
 class Player < ActiveRecord::Base
   TOP_SCORE = 20.0
   GRUDGE_MATCH_WIN = 20.0
-  GRUDGE_MATCH_LOSS = 17.0
+  GRUDGE_MATCH_LOSS = 15.0
   has_many :score, :finder_sql =>
     'select id, machine_id, player_id, max(score) as score ' +
     'from scores ' +
