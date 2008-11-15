@@ -69,4 +69,10 @@ class TestPlayer < Test::Unit::TestCase
     Machine.find_or_create_by_name("cool")
     assert_equal("cool", Player.find_or_create_by_name("JC").unplayed_games.first.name)
   end
+
+  def test_ppg_test_andy_should_have_written_the_first_time
+    Score.add_high_score("JC", "WWJD", 1000)
+    Score.add_high_score("JC", "WWJD", 1)
+    assert_equal(20, Player.find_or_create_by_name("JC").ppg)
+  end
 end
