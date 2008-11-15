@@ -64,5 +64,9 @@ class TestPlayer < Test::Unit::TestCase
     assert_equal("JC", players.first.name)
   end
 
-
+  def test_unplayed_games
+    Score.add_high_score("JC", "WWJD", 777)
+    Machine.find_or_create_by_name("cool")
+    assert_equal("cool", Player.find_or_create_by_name("JC").unplayed_games.first.name)
+  end
 end
