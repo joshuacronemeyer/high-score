@@ -4,9 +4,9 @@ require 'grudge_match'
 require 'score'
 
 class Player < ActiveRecord::Base
-  TOP_SCORE = 20
-  GRUDGE_MATCH_WIN = 20
-  GRUDGE_MATCH_LOSS = 17
+  TOP_SCORE = 20.0
+  GRUDGE_MATCH_WIN = 20.0
+  GRUDGE_MATCH_LOSS = 17.0
   has_many :score, :finder_sql =>
     'select id, machine_id, player_id, max(score) as score ' +
     'from scores ' +
@@ -16,10 +16,9 @@ class Player < ActiveRecord::Base
   has_many :losses, :foreign_key => 'loser_id', :class_name => 'GrudgeMatch'
 
   def overall_score
-    overall_score_var = 0
-    machines = self.score.collect{|score| score.machine}.uniq
-    machines.each do |machine|
-      high_scores = sorted_top_scoreable_scores(machine.id)
+    overall_score_var = 0.0
+    score.each do |score|
+      high_scores = sorted_top_scoreable_scores(score.machine.id)
       high_scores.each_with_index do |hi_score, index|
         if (hi_score.player.id == self.id)
           overall_score_var += (TOP_SCORE - index)
