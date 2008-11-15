@@ -16,18 +16,18 @@ class Player < ActiveRecord::Base
   has_many :losses, :foreign_key => 'loser_id', :class_name => 'GrudgeMatch'
 
   def overall_score
-    overall_score = 0
+    overall_score_var = 0
     machines = self.score.collect{|score| score.machine}.uniq
     machines.each do |machine|
       high_scores = sorted_top_scoreable_scores(machine.id)
       high_scores.each_with_index do |hi_score, index|
         if (hi_score.player.id == self.id)
-          overall_score += (TOP_SCORE - index)
+          overall_score_var += (TOP_SCORE - index)
           break
         end
       end
     end
-    return overall_score + grudge_match_scores
+    return overall_score_var + grudge_match_scores
   end
 
   def already_played_this_game?(machine)
