@@ -118,15 +118,19 @@ class HighScore < Shoes
   def new_grudge
     background black
     navigation
+    helper = HighScoreAppHelper.new
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
       para "Winner:", turq_centered
       para "Loser:", turq_centered
       para "Machine:", turq_centered
     end
     stack :width => "-50%", :margin => 10 do
-      @winner_name = edit_line
-      @loser_name = edit_line
-      @grudge_machine = edit_line
+      @winner_name = list_box :items => helper.get_player_names
+      @winner_name.choose("<Select>");
+      @loser_name = list_box :items => helper.get_player_names
+      @loser_name.choose("<Select>");
+      @grudge_machine = list_box :items => helper.get_machine_names
+      @grudge_machine.choose("<Select>");
       @submit = button "Submit Your Match" 
     end
     @submit.click do
