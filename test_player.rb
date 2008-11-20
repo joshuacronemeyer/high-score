@@ -36,7 +36,7 @@ class TestPlayer < Test::Unit::TestCase
     Score.add_high_score("asdf", "adf", 3)
     Player.find(:all).each do |player|
       output = "#{player.name} - #{player.overall_score}"
-      assert_equal("asdf - 20", output)
+      assert_equal("asdf - 20.0", output)
     end
   end
 
@@ -48,8 +48,8 @@ class TestPlayer < Test::Unit::TestCase
 
   def test_scoring_for_grudge_matches
     GrudgeMatch.add_score("JC", "WWJD", "TMNT")
-    assert_equal(20, Player.find_by_name("JC").overall_score)
-    assert_equal(17, Player.find_by_name("WWJD").overall_score)
+    assert_equal(Player::GRUDGE_MATCH_WIN, Player.find_by_name("JC").overall_score)
+    assert_equal(Player::GRUDGE_MATCH_LOSS, Player.find_by_name("WWJD").overall_score)
   end
   
   def test_sorted_overall
@@ -73,6 +73,6 @@ class TestPlayer < Test::Unit::TestCase
   def test_ppg_test_andy_should_have_written_the_first_time
     Score.add_high_score("JC", "WWJD", 1000)
     Score.add_high_score("JC", "WWJD", 1)
-    assert_equal(20, Player.find_or_create_by_name("JC").ppg)
+    assert_equal(20.0, Player.find_or_create_by_name("JC").ppg)
   end
 end
