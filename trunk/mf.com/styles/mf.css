@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+body {
+	background: #333333;
+	padding: 0;
+	margin: 0;
+	font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+.page{
+    margin: 20px 50px;
+    padding: 0;
+    background: white;
+    height: 900px;
+    width: 825px;
+}
+
+.mainTitle{
+    font-size: 24px;
+    float:left;
+    text-align: center;
+    margin: 10px;
+}
+
+.subTitle{
+    font-size: 18px;
+    float:left;
+}
+
+.topBox{
+    float:left;
+    width:825px;
+}
+
+.featuredPics{
+    float:right;
+    border: solid thin black;
+    padding:5px;
+    margin: 5px;
+    height:190px;
+    width:228px;
+}
+
+.tabs{
+    float:left;
+}
+
+.tab-container{
+    height:600px;
+    width:800px;
+}
