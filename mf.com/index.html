@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+    <script type="text/javascript" src="scripts/thickbox.js"></script>
+    <script type="text/javascript" src="scripts/jquery-ui-all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/flora.all.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#featuredPics').cycle('fade');
+            $("#example > ul").tabs();
+        });
+    </script>
+
+    <title>The Official Monkey Farm Web Site</title>
+</head>
+<body>
+<div class="page">
+	<!-- Top box -->
+	<div class="topBox">
+		<div>
+			<div class="mainTitle">
+				<p>The Official Monkey Farm Web Site</p>
+				<p>Enjoy your monkeying...</p>
+			</div>
+		</div>
+		<!-- seasonal featured pictures-->
+		<div class="featuredPics">
+			Winter at the Monkey Farm
+			<div id="featuredPics">
+				<img src="images/thumb1.jpg" width="228" height="171"/>
+				<img src="images/thumb2.jpg" width="228" height="171"/>
+				<img src="images/thumb3.jpg" width="228" height="171"/>
+			</div>
+		</div>
+	</div>
+
+	<!-- tabs -->
+	<div class="tabs">
+		<div id="example">
+			<ul class="flora">
+				<li><a href="#mainTab">About the Monkey Farm</a></li>
+				<li><a href="#eventsTab">Events</a></li>
+				<li><a href="#directionsTab">Where is it?</a></li>
+				<li><a href="#projectsTab">Current Projects</a></li>
+			</ul>
+		</div>
+		<!-- tab containers -->
+		<div id="mainTab" class="tab-container">
+			Click on parts of the image below to explore the Monkey Farm.
+			<img src="mf1.JPG" usemap="#Sample" alt="" style="border-style:none"/>
+
+			<map id="Sample" name="Sample">
+				<area shape="poly" coords="162,50 162,50 175,50 179,108 173,112 172,144 106,144 104,34 160,31 162,50 "
+					  href="pool.html" title="Pool" alt=""/>
+				<area shape="circle" coords="215,62,11" href="bonfirepit.html" title="Bonfire Pit" alt=""/>
+				<area shape="rect" coords="126,214,183,310" href="barn.html" title="Barn" alt=""/>
+				<area shape="rect" coords="230,219,320,273" href="blockHouse.html" title="Block House" alt=""/>
+				<area shape="rect" coords="239,180,269,196" href="van.html" title="Van" alt=""/>
+				<area shape="rect" coords="173,113,251,148" href="poolHouse.html" title="Pool House" alt=""/>
+			</map>
+
+		</div>
+		<div id="eventsTab" class="tab-container">
+			<input alt="#TB_inline?height=300&width=400&inlineId=myOnPageContent" title="The pool" class="thickbox"
+				   type="button" value="Show"/>
+			<a href="#TB_inline?height=155&width=300&inlineId=hiddenModalContent&modal=true" title="The pool"
+			   class="thickbox">Show hidden modal content.</a>
+
+			<div id="myOnPageContent" style="display:none"><p>This is the pool. Isn't it great?</p></div>
+		</div>
+		<div id="directionsTab" class="tab-container">
+			Directions
+		</div>
+		<div id="projectsTab" class="tab-container">
+			Projects
+		</div>
+	</div>
+</div>
+</body>
+</html>
