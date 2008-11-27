@@ -1,13 +1,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>The Pool</title>
-<div class="header"/>
-The Pool
-</div>
+    <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
+
+	<script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		$('#pics').cycle({
+			fx:     'fade',
+			speed:  'fast',
+			timeout: 0,
+			next:   '#next',
+			prev:   '#prev'
+		});
+	});
+	</script>
+
+	<title>The Pool</title>
 </head>
 <body>
-This is the pool.  There are many like it but this one is mine.
-<img src="images/image1-25.jpg"/>
+	<div class="page">
+		<!-- Top box -->
+		<div class="locationBox">
+			<p class="subTitle">This is the pool.  There are many like it but this one is mine.</p>
+			<div>
+				<strong>Item:</strong>  The Pool
+			</div>
+			<div>
+				<strong>Built:</strong> 1999?
+			</div>
+			<div class="summary">
+				We had this pool built over the course of 3 years.  It is 30 x 60 feet which is <strong>smaller</strong> than an Olympic size pool
+			</div>
+		</div>
+		<div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
+
+		<div class="pics" id="pics">
+			<img src="images/pool/andersons_pool.jpg" />
+			<img src="images/pool/andy_mari_sam.jpg" />
+			<img src="images/pool/anna_h.jpg" />
+			<img src="images/pool/hippie_is_tough.jpg" />
+			<img src="images/pool/mari_swim2.jpg" />
+			<img src="images/pool/missy_anna_pool.jpg" />
+			<img src="images/pool/olivier_hippie_pool.jpg" />
+			<img src="images/pool/pool_h.jpg" />
+			<img src="images/pool/pool_ls.jpg" />
+			<img src="images/pool/sam_by_pool.jpg" />
+			<img src="images/pool/sam_k_hippie_swim.jpg" />
+		</div>
+	</div>
 </body>
 </html>
