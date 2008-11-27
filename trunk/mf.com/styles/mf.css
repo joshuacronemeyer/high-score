@@ -16,21 +16,41 @@ body {
     width: 825px;
 }
 
+.topBox{
+    float: left;
+    height: 200px;
+    width: 825px;
+}
+
+.locationBox{
+    float: left;
+    height: 100px;
+    width: 825px;
+    border: solid thin blue;
+    padding: 0 0 0 10px
+}
+
 .mainTitle{
     font-size: 24px;
-    float:left;
     text-align: center;
-    margin: 10px;
 }
 
 .subTitle{
     font-size: 18px;
-    float:left;
+    margin: 5px
 }
 
-.topBox{
+.normalText{
+    font-size: 12px;
+}
+
+
+.topText{
     float:left;
-    width:825px;
+    margin: 10px;
+    padding: 0px 10px;
+    width: 530px;
+    border: solid thin blue;
 }
 
 .featuredPics{
@@ -42,6 +62,11 @@ body {
     width:228px;
 }
 
+.featuredPic{
+    width: 228;
+    height: 171;
+}
+
 .tabs{
     float:left;
 }
@@ -49,4 +74,8 @@ body {
 .tab-container{
     height:600px;
     width:800px;
+}
+
+.nav{
+    font-size:14px;
 }
