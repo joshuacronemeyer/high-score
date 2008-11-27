@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
+
+	<script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		$('#pics').cycle({
+			fx:     'fade',
+			speed:  'fast',
+			timeout: 0,
+			next:   '#next',
+			prev:   '#prev'
+		});
+	});
+	</script>
+
+	<title>The Block House</title>
+</head>
+<body>
+	<div class="page">
+		<!-- Top box -->
+		<div class="locationBox">
+			<p class="subTitle">Look, a cinder block building with a concrete floor.
+			<div>
+				<strong>Item:</strong>  The Block House
+			</div>
+            <div>
+				<strong>aka:</strong>  The Boys House, The Gym, The Workshop
+			</div>
+			<div>
+				<strong>Built:</strong> ??
+			</div>
+			<div class="summary">
+				Typical farm out building but the concrete floor was poured at some point.  It is heated and we have workout equipment, ping pong, washer and dryer, and workshop.
+			</div>
+		</div>
+		<div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
+
+		<div class="pics" id="pics">
+			<img src="images/blockhouse/gym1.jpg" />
+			<img src="images/blockhouse/gym2.jpg" />
+			<img src="images/blockhouse/gym3.jpg" />
+		</div>
+	</div>
+</body>
+</html>

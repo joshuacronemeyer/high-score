@@ -24,10 +24,11 @@ body {
 
 .locationBox{
     float: left;
-    height: 100px;
-    width: 825px;
+    height: 125px;
+    width: 795px;
     border: solid thin blue;
-    padding: 0 0 0 10px
+    padding: 0 0 0 10px;
+    margin: 10px;
 }
 
 .mainTitle{
@@ -48,7 +49,7 @@ body {
 .topText{
     float:left;
     margin: 10px;
-    padding: 0px 10px;
+    padding: 0 10px;
     width: 530px;
     border: solid thin blue;
 }
@@ -63,8 +64,12 @@ body {
 }
 
 .featuredPic{
-    width: 228;
-    height: 171;
+    width: 228px;
+    height: 171px;
+}
+
+.pics{
+    margin: 10px;
 }
 
 .tabs{
@@ -78,4 +83,5 @@ body {
 
 .nav{
     font-size:14px;
+    margin: 0 0 0 20px;
 }
