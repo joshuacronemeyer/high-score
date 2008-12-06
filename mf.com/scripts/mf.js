@@ -1,0 +1,34 @@
+$(document).ready(function() {
+    $("#mfFloater").dialog({
+        autoOpen:true,
+        height:160,
+        width:140,
+        dialogClass:"floatBox",
+        draggable:false,
+        resizable:false
+    });
+    $(".pool").hover(
+        function () {
+            show_float("images/pool/pool_ls.jpg", "Look, a pool");
+        },
+        function() {
+            close_float();
+        });
+    $(".blockhouse").hover(
+        function () {
+            show_float("images/blockhouse/gym1.jpg", "Concrete Blockhouse");
+        },
+        function() {
+            close_float();
+        });
+});
+function show_float(image, title) {
+    $("#mfFloater").dialog("open");
+    $("#floaterPic").attr({src: image});
+    $("#ui-dialog-title-mfFloater").text(title);
+
+}
+
+function close_float() {
+    $("#mfFloater").dialog("close");
+}

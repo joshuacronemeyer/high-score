@@ -45,7 +45,6 @@ body {
     font-size: 12px;
 }
 
-
 .topText{
     float:left;
     margin: 10px;
@@ -72,6 +71,11 @@ body {
     margin: 10px;
 }
 
+.smallPic{
+    width: 60px;
+    height: 45px;
+}
+
 .tabs{
     float:left;
 }
@@ -84,4 +88,24 @@ body {
 .nav{
     font-size:14px;
     margin: 0 0 0 20px;
+}
+
+.floatBox {
+    background:#EEEEEE none repeat scroll 0 0;
+    border:1px solid #999999;
+    min-height:50px;
+    width:380px;
+}
+/* JQuery dialog overrides */
+.ui-dialog-titlebar {
+    background:#CCCCCC none repeat scroll 0 0;
+    padding:8px;
+}
+
+.ui-dialog-content {
+    padding:8px;    
+}
+
+.ui-dialog-titlebar-close {
+    display:none;
 }

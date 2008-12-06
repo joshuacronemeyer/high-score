@@ -6,6 +6,7 @@
     <script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
     <script type="text/javascript" src="scripts/thickbox.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui-all.js"></script>
+    <script type="text/javascript" src="scripts/mf.js"></script>
 
     <link rel="stylesheet" type="text/css" href="styles/flora.all.css"/>
     <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
@@ -14,12 +15,24 @@
         $(document).ready(function() {
             $('#featuredPics').cycle('fade');
             $("#example > ul").tabs();
+            $('#animalPics').cycle({
+                fx:     'fade',
+                speed:  'fast',
+                timeout: 0,
+                next:   '#next',
+                prev:   '#prev'
+            });
         });
     </script>
 
     <title>The Official Monkey Farm Web Site</title>
 </head>
 <body>
+
+    <div id="mfFloater" title="Title here">Click on the map to see more images...
+        <p><img id="floaterPic" class="smallPic" src="" alt="not found"/></p>
+    </div>
+
 <div class="page">
 	<!-- Top box -->
 	<div class="topBox">
@@ -27,16 +40,15 @@
 			<p class="mainTitle">The Official Monkey Farm Web Site</p>
 			<p class="subTitle">Enjoy your monkeying...</p>
 			<p class="normalText">We want this site to be the portal site for all your monkey farm needs.</p>
-
 		</div>
 
 		<!-- seasonal featured pictures-->
 		<div class="featuredPics">
 			Winter at the Monkey Farm
 			<div id="featuredPics">
-				<img class="featuredPic" src="images/thumb1.jpg" title="The tractor likes the snow" />
-				<img class="featuredPic" src="images/thumb2.jpg" title="The Ford likes the snow"/>
-				<img class="featuredPic" src="images/thumb3.jpg" title="The bonfire pit likes the snow too."/>
+				<img class="featuredPic" src="images/thumb1.jpg" title="The tractor likes the snow" alt=""/>
+				<img class="featuredPic" src="images/thumb2.jpg" title="The Ford likes the snow" alt=""/>
+				<img class="featuredPic" src="images/thumb3.jpg" title="The bonfire pit likes the snow too." alt=""/>
 			</div>
 		</div>
     </div>
@@ -58,26 +70,26 @@
 			<img src="mf1.jpg" usemap="#Sample" alt="" style="border-style:none"/>
 
 			<map id="Sample" name="Sample">
-				<area shape="poly" coords="162,50 162,50 175,50 179,108 173,112 172,144 106,144 104,34 160,31 162,50 "
+				<area class="pool" shape="poly" coords="162,50 162,50 175,50 179,108 173,112 172,144 106,144 104,34 160,31 162,50 "
 					  href="pool.html" title="Pool" alt=""/>
 				<area shape="circle" coords="215,62,11" href="bonfirepit.html" title="Bonfire Pit" alt=""/>
 				<area shape="rect" coords="126,214,183,310" href="barn.html" title="Barn" alt=""/>
-				<area shape="rect" coords="230,219,320,273" href="blockHouse.html" title="Block House" alt=""/>
+				<area class="blockhouse" shape="rect" coords="230,219,320,273" href="blockHouse.html" title="Block House" alt=""/>
 				<area shape="rect" coords="239,180,269,196" href="van.html" title="Van" alt=""/>
 				<area shape="rect" coords="173,113,251,148" href="poolHouse.html" title="Pool House" alt=""/>
 			</map>
 
 		</div>
         <div id="animalsTab" class="tab-container">
-            Pictures of animals go here
+            <div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
+            
+            <div class="animalPics" id="pics">
+                <img src="images/animals/colt1.jpg" alt=""/>
+                <img src="images/animals/colt.jpg" alt=""/>
+            </div>
         </div>
 		<div id="eventsTab" class="tab-container">
-			<input alt="#TB_inline?height=300&width=400&inlineId=myOnPageContent" title="The pool" class="thickbox"
-				   type="button" value="Show"/>
-			<a href="#TB_inline?height=155&width=300&inlineId=hiddenModalContent&modal=true" title="The pool"
-			   class="thickbox">Show hidden modal content.</a>
-
-			<div id="myOnPageContent" style="display:none"><p>This is the pool. Isn't it great?</p></div>
+            Current Events
 		</div>
 		<div id="directionsTab" class="tab-container">
 			Directions
