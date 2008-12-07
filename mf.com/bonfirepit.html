@@ -1,24 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
-<script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-	$('#s2').cycle('fade');
-});
-</script>
+    <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
 
-<title>Fading Pics</title>
+	<script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		$('#pics').cycle({
+			fx:     'fade',
+			speed:  'fast',
+			timeout: 0,
+			next:   '#next',
+			prev:   '#prev'
+		});
+	});
+	</script>
+
+	<title>The Bonfire Pit</title>
 </head>
 <body>
-Pics Fade Away
+	<div class="page">
+		<!-- Top box -->
+		<div class="locationBox">
+			<p class="subTitle">Burn baby burn.
+			<div>
+				<strong>Item:</strong>  Bonfire Pit
+			</div>
+            <div>
+				<strong>aka:</strong> The Burning Pile
+			</div>
+			<div>
+				<strong>Built:</strong> Rebuilt every summer.
+			</div>
+			<div class="summary">
+				We have lots of wood that falls from the sky at the Monkey Farm.  Burning it seems like a good way of getting rid of it.
+			</div>
+		</div>
+		<div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
 
-<div class="pics" id="s2">
-    <img src="images/image1-25.jpg" title="Tractor in the snow" />
-    <img src="images/image2-25.jpg" title="More Snow"/>
-    <img src="images/image3-25.jpg" title="I like snow"/>
-</div>
-
+		<div class="pics" id="pics">
+			<img src="images/pool/boo.jpg" />
+		</div>
+	</div>
 </body>
 </html>
