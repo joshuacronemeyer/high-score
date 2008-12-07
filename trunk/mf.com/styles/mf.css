@@ -1,28 +1,30 @@
-@CHARSET "UTF-8";
+@CHARSET
+"UTF-8"
+;
 
 body {
-	background: #333333;
-	padding: 0;
-	margin: 0;
-	font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
-	font-size: 12px;
+    background: #333333;
+    padding: 0;
+    margin: 0;
+    font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
-.page{
+.page {
     margin: 20px 50px;
     padding: 0;
     background: white;
-    height: 900px;
-    width: 825px;
+    height: 700px;
+    width: 850px;
 }
 
-.topBox{
+.topBox {
     float: left;
     height: 200px;
-    width: 825px;
+    width: 850px;
 }
 
-.locationBox{
+.locationBox {
     float: left;
     height: 125px;
     width: 795px;
@@ -31,81 +33,92 @@ body {
     margin: 10px;
 }
 
-.mainTitle{
+.mainTitle {
     font-size: 24px;
     text-align: center;
 }
 
-.subTitle{
+.subTitle {
     font-size: 18px;
     margin: 5px
 }
 
-.normalText{
+.normalText {
     font-size: 12px;
 }
 
-.topText{
-    float:left;
+.topText {
+    float: left;
     margin: 10px;
     padding: 0 10px;
-    width: 530px;
+    width: 550px;
     border: solid thin blue;
 }
 
-.featuredPics{
-    float:right;
+.featuredPics {
+    float: right;
     border: solid thin black;
-    padding:5px;
+    padding: 5px;
     margin: 5px;
-    height:190px;
-    width:228px;
+    height: 190px;
+    width: 228px;
 }
 
-.featuredPic{
+.featuredPic {
     width: 228px;
     height: 171px;
 }
 
-.pics{
+.pics {
     margin: 10px;
 }
 
-.smallPic{
-    width: 60px;
-    height: 45px;
+.smallPic {
+    width: 120px;
+    height: 90px;
 }
 
-.tabs{
-    float:left;
+.tabs {
+    float: left;
+    height: 600px;
+    width: 840px;
+    padding: 5px;
 }
 
-.tab-container{
-    height:600px;
-    width:800px;
+.tab-container {
 }
 
-.nav{
-    font-size:14px;
+.nav {
+    font-size: 14px;
     margin: 0 0 0 20px;
 }
 
 .floatBox {
-    background:#EEEEEE none repeat scroll 0 0;
-    border:1px solid #999999;
-    min-height:50px;
-    width:380px;
+    background: #EEEEEE none repeat scroll 0 0;
+    border: 1px solid #999999;
+    min-height: 50px;
 }
+
+.floatArrow {
+    left: -14px;
+    position: absolute;
+    top: 7px;
+}
+
 /* JQuery dialog overrides */
 .ui-dialog-titlebar {
-    background:#CCCCCC none repeat scroll 0 0;
-    padding:8px;
+    background: #CCCCCC none repeat scroll 0 0;
+    padding: 2px 8px;
 }
 
 .ui-dialog-content {
-    padding:8px;    
+    padding: 8px;
 }
 
 .ui-dialog-titlebar-close {
-    display:none;
+    display: none;
+}
+
+element.style{
+    left:100px;
 }
