@@ -14,20 +14,20 @@ body {
     margin: 20px 50px;
     padding: 0;
     background: white;
-    height: 700px;
-    width: 850px;
+    height: 800px;
+    width: 1024px;
 }
 
 .topBox {
     float: left;
-    height: 200px;
-    width: 850px;
+    height: 190px;
+    width: 1024px;
 }
 
 .locationBox {
     float: left;
     height: 125px;
-    width: 795px;
+    width: 97%;
     border: solid thin blue;
     padding: 0 0 0 10px;
     margin: 10px;
@@ -45,6 +45,7 @@ body {
 
 .normalText {
     font-size: 12px;
+    margin: 5px;
 }
 
 .topText {
@@ -80,12 +81,14 @@ body {
 
 .tabs {
     float: left;
-    height: 600px;
-    width: 840px;
+    height: 800px;
+    width: 1014px;
     padding: 5px;
 }
 
 .tab-container {
+    width: 97.8%;
+    height: 545px;
 }
 
 .nav {

@@ -1,32 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="styles/mf.css"/>
-<script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
-<script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-	$('#s2').cycle({
-	    fx:     'fade',
-	    speed:  'fast',
-	    timeout: 0,
-	    next:   '#next',
-	    prev:   '#prev'
-	});
-});
-</script>
+    <link rel="stylesheet" type="text/css" href="styles/mf.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#s2').cycle({
+                fx:     'fade',
+                speed:  'fast',
+                timeout: 0,
+                next:   '#next',
+                prev:   '#prev'
+            });
+        });
+    </script>
 
-<title>Worked</title>
+    <title>Worked</title>
 </head>
 <body>
-<div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
+<div class="page">
+    <!-- Top box -->
+    <div class="locationBox">
+        <p class="subTitle">No animals in this barn
 
-<div class="pics" id="s2">
-    <img src="images/image1.jpg" width="400" height="400" />
-    <img src="images/image2.jpg" width="400" height="400" />
-    <img src="images/image3.jpg" width="400" height="400" />
+        <div>
+            <strong>Item:</strong> The Barn
+        </div>
+        <div>
+            <strong>Built:</strong> ?
+        </div>
+        <div class="summary">
+            Big Red Barn
+        </div>
+    </div>
+    <div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
+
+    <div class="pics" id="pics">
+    </div>
 </div>
-
-
 </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#featuredPics').cycle('fade');
-            $("#example > ul").tabs();
+            $("#mainTabs > ul").tabs();
             $('#animalPics').cycle({
                 fx:     'fade',
                 speed:  'fast',
@@ -29,76 +29,89 @@
 </head>
 <body>
 
-    <div id="mfFloater" title="Title here">Click to see more...
-        <p><img id="floaterPic" class="smallPic" src="" alt="not found"/></p>
-        <!--<img class="floatArrow" alt="" src="images/comment-arrow.png"/>-->
-    </div>
+<div id="mfFloater" title="Title here">Click to see more...
+    <p><img id="floaterPic" class="smallPic" src="" alt="not found"/></p>
+    <!--<img class="floatArrow" alt="" src="images/comment-arrow.png"/>-->
+</div>
 
 <div class="page">
-	<!-- Top box -->
-	<div class="topBox">
-		<div class="topText">
-			<p class="mainTitle">The Official Monkey Farm Web Site</p>
-			<p class="subTitle">Enjoy your monkeying...</p>
-			<p class="normalText">We want this site to be the portal site for all your monkey farm needs.</p>
-		</div>
+    <!-- Top box -->
+    <div class="topBox">
+        <div class="topText">
+            <p class="mainTitle">The Official Monkey Farm Web Site</p>
 
-		<!-- seasonal featured pictures-->
-		<div class="featuredPics">
-			Winter at the Monkey Farm
-			<div id="featuredPics">
-				<img class="featuredPic" src="images/thumb1.jpg" title="The tractor likes the snow" alt=""/>
-				<img class="featuredPic" src="images/thumb2.jpg" title="The Ford likes the snow" alt=""/>
-				<img class="featuredPic" src="images/thumb3.jpg" title="The bonfire pit likes the snow too." alt=""/>
-			</div>
-		</div>
+            <p class="subTitle">Enjoy your monkeying...</p>
+
+            <p class="normalText">We want this site to be the portal site for all your monkey farm needs.</p>
+        </div>
+
+        <!-- seasonal featured pictures-->
+        <div class="featuredPics">
+            Winter at the Monkey Farm
+            <div id="featuredPics">
+                <img class="featuredPic" src="images/thumb1.jpg" title="The tractor likes the snow" alt=""/>
+                <img class="featuredPic" src="images/thumb2.jpg" title="The Ford likes the snow" alt=""/>
+                <img class="featuredPic" src="images/thumb3.jpg" title="The bonfire pit likes the snow too." alt=""/>
+            </div>
+        </div>
     </div>
 
-	<!-- tabs -->
-	<div class="tabs">
-		<div id="example">
-			<ul class="flora">
-				<li><a href="#mainTab">About the Monkey Farm</a></li>
-				<li><a href="#animalsTab">Animals at the Farm</a></li>
+    <!-- tabs -->
+    <div class="tabs">
+        <div id="mainTabs">
+            <ul class="flora">
+                <li><a href="#aboutMFTab">About the Monkey Farm</a></li>
+                <li><a href="#animalsTab">Animals at the Farm</a></li>
                 <li><a href="#eventsTab">Events</a></li>
-				<li><a href="#directionsTab">Where is it?</a></li>
-				<li><a href="#projectsTab">Current Projects</a></li>
-			</ul>
-		</div>
-		<!-- tab containers -->
-		<div id="mainTab" class="tab-container">
-			Click on parts of the image below to explore the Monkey Farm.
-			<img src="mf1.jpg" usemap="#Sample" alt="" style="border-style:none"/>
-
-			<map id="Sample" name="Sample">
-				<area class="pool" shape="poly" coords="162,50 162,50 175,50 179,108 173,112 172,144 106,144 104,34 160,31 162,50 "
-					  href="pool.html" title="Pool" alt=""/>
-				<area shape="circle" coords="215,62,11" href="bonfirepit.html" title="Bonfire Pit" alt=""/>
-				<area shape="rect" coords="126,214,183,310" href="barn.html" title="Barn" alt=""/>
-				<area class="blockhouse" shape="rect" coords="230,219,320,273" href="blockHouse.html" title="Block House" alt=""/>
-				<area shape="rect" coords="239,180,269,196" href="van.html" title="Van" alt=""/>
-				<area shape="rect" coords="173,113,251,148" href="poolHouse.html" title="Pool House" alt=""/>
-			</map>
-
-		</div>
+                <li><a href="#directionsTab">Where is it?</a></li>
+                <li><a href="#projectsTab">Current Projects</a></li>
+            </ul>
+        </div>
+        <!-- tab containers -->
+        <div id="aboutMFTab" class="tab-container">
+            Click on parts of the image below to explore the Monkey Farm.
+            <map id="Sample" name="Sample">
+                <img src="mf1.jpg" usemap="#Sample" alt="" style="border-style:none"/>
+                <area class="johanGoal" shape="rect" coords="723,98,762,119" href="johanGoal.html" title="Johan Goal" alt=""/>
+                <area class="frontHouse" shape="poly" coords="750,310 750,310 746,372 804,376 806,313 750,310 " href="frontHouse.html"
+                      title="Front House" alt=""/>
+                <area class="garage1" shape="poly" coords="628,296 628,296 626,334 663,334 664,299 628,296 " href="garage1.html"
+                      title="Garage One" alt=""/>
+                <area class="garage2" shape="poly" coords="593,295 593,295 592,328 592,330 592,332 624,334 626,296 593,295 "
+                      href="garage2.html" title="Garage Two" alt=""/>
+                <area class="blockhouse" shape="poly" coords="591,306 591,306 591,358 507,354 505,302 591,306 "
+                      href="blockHouse.html" title="Block House" alt=""/>
+                <area shape="poly"
+                      coords="402,305 402,305 398,417 449,425 454,344 495,345 495,329 456,326 454,310 402,305 "
+                      href="barn.html" title="The Barn" alt=""/>
+                <area shape="circle" coords="509,128,17" href="woodpile.html" title="Woodpile" alt=""/>
+                <area class="bonfirepit" shape="circle" coords="487,147,10" href="bonfirepit.html" title="Bonfire Pit" alt=""/>
+                <area class="poolhouse" shape="poly" coords="449,203 518,201 519,230 452,233 449,203 " href="poolHouse.html"
+                      title="Pool House" alt=""/>
+                <area shape="rect" coords="512,267,542,282" href="van.html" title="The Van" alt=""/>
+                <area class="pool" shape="poly"
+                      coords="433,120 433,120 435,138 448,138 453,202 452,203 449,203 451,231 381,232 376,123 433,120 "
+                      href="pool.html" title="Pool" alt=""/>
+            </map>
+        </div>
         <div id="animalsTab" class="tab-container">
             <div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
-            
-            <div class="animalPics" id="pics">
+
+            <div id="animalPics">
                 <img src="images/animals/colt1.jpg" alt=""/>
                 <img src="images/animals/colt.jpg" alt=""/>
             </div>
         </div>
-		<div id="eventsTab" class="tab-container">
+        <div id="eventsTab" class="tab-container">
             Current Events
-		</div>
-		<div id="directionsTab" class="tab-container">
-			Directions
-		</div>
-		<div id="projectsTab" class="tab-container">
-			Projects
-		</div>
-	</div>
+        </div>
+        <div id="directionsTab" class="tab-container">
+            Directions
+        </div>
+        <div id="projectsTab" class="tab-container">
+            Projects
+        </div>
+    </div>
 </div>
 </body>
 </html>

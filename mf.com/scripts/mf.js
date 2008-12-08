@@ -9,7 +9,21 @@ $(document).ready(function() {
     });
     $(".pool").hover(
         function () {
-            show_float("images/pool/pool_ls.jpg", "Look, a pool","250px","260px");
+            show_float("images/pool/pool_ls.jpg", "Look, a pool","250px","530px");
+        },
+        function() {
+            close_float();
+        });
+    $(".poolhouse").hover(
+        function () {
+            show_float("images/pool/pool_ls.jpg", "Pool House","250px","530px");
+        },
+        function() {
+            close_float();
+        });
+    $(".bonfirepit").hover(
+        function () {
+            show_float("images/pool/pool_ls.jpg", "A Place for Burning","250px","600px");
         },
         function() {
             close_float();
