@@ -30,7 +30,7 @@ $(document).ready(function() {
         });
     $(".blockhouse").hover(
         function () {
-            show_float("images/blockhouse/gym1.jpg", "Concrete Blockhouse","360px","400px");
+            show_float("images/blockhouseSmall.jpg", "Concrete Blockhouse","360px","400px");
         },
         function() {
             close_float();
