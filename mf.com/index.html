@@ -3,7 +3,7 @@
 
 <head>
     <script type="text/javascript" src="scripts/jquery-1.2.6.js"></script>
-    <script type="text/javascript" src="scripts/jquery.cycle.all.pack.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cycle.lite.min.js"></script>
     <script type="text/javascript" src="scripts/thickbox.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui-all.js"></script>
     <script type="text/javascript" src="scripts/mf.js"></script>
@@ -13,10 +13,9 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#featuredPics').cycle('fade');
+            $('#featuredPics').cycle();
             $("#mainTabs > ul").tabs();
             $('#animalPics').cycle({
-                fx:     'fade',
                 speed:  'fast',
                 timeout: 0,
                 next:   '#next',
@@ -49,9 +48,18 @@
         <div class="featuredPics">
             Winter at the Monkey Farm
             <div id="featuredPics">
-                <img class="featuredPic" src="images/thumb1.jpg" title="The tractor likes the snow" alt=""/>
-                <img class="featuredPic" src="images/thumb2.jpg" title="The Ford likes the snow" alt=""/>
-                <img class="featuredPic" src="images/thumb3.jpg" title="The bonfire pit likes the snow too." alt=""/>
+                <li class="noListStyle">
+                    <img class="featuredPic" src="images/thumb1.jpg" alt=""/>
+                    <p class="caption">The tractor likes the snow.</p>
+                </li>
+                <li class="noListStyle">
+                    <img class="featuredPic" src="images/thumb2.jpg" alt=""/>
+                    <p class="caption">The Ford likes the snow.</p>
+                </li>
+                <li class="noListStyle">
+                    <img class="featuredPic" src="images/thumb3.jpg" alt=""/>
+                    <p class="caption">The bonfire pit likes the snow too.</p>
+                </li>
             </div>
         </div>
     </div>
@@ -98,8 +106,46 @@
             <div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a></div>
 
             <div id="animalPics">
-                <img src="images/animals/colt1.jpg" alt=""/>
-                <img src="images/animals/colt.jpg" alt=""/>
+                <li class="noListStyle">
+                    <img src="images/animals/colt1.jpg" alt=""/>
+                    <p class="caption">Awwww, look at the baby horse, I mean pony.</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/colt.jpg" alt=""/>
+                    <p class="caption">Another shot of the cute horsey.</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/crawfish0001.jpg" alt=""/>
+                    <p class="caption">A tiny crawfish.</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/deer0003.jpg" alt=""/>
+                    <p class="caption">What are you looking at, tough guy?</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/deer0008.jpg" alt=""/>
+                    <p class="caption">Same Deer of different one?</p>
+                </li>
+                <li class="noListStyle">
+                <img src="images/animals/frog.jpg" alt=""/>
+                <p class="caption">A frog.</p>
+                </li>
+                <li class="noListStyle">
+                <img src="images/animals/frog_og.jpg" alt=""/>
+                <p class="caption">Another frog.</p>
+                </li>
+                <li class="noListStyle">
+                <img src="images/animals/peacock0002.jpg" alt=""/>
+                <p class="caption">What the ?!!</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/rac2.jpg" alt=""/>
+                    <p class="caption">Racoon.</p>
+                </li>
+                <li class="noListStyle">
+                    <img src="images/animals/tortuga0004.jpg" alt=""/>
+                    <p class="caption">Tortuga.</p>
+                </li>
             </div>
         </div>
         <div id="eventsTab" class="tab-container">

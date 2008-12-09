@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
     $(".pool").hover(
         function () {
-            show_float("images/pool/pool_ls.jpg", "Look, a pool","250px","530px");
+            show_float("images/poolSmall.jpg", "Look, a pool","250px","530px");
         },
         function() {
             close_float();
