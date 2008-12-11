@@ -75,6 +75,39 @@ body {
     list-style-type: none;
 }
 
+/* Project styles */
+.project {
+    border: solid thin black;
+    background-color: white;
+    margin: 5px 0;
+    height: 65px;
+}
+
+.projectImage{
+    padding: 5px 5px 0 5px;
+}
+
+.projectsHeader {
+    font-size: 12px;
+}
+.currentProjects {
+    background-color: mediumseagreen;
+    float: left;
+    padding: 5px;
+    width: 48%;
+}
+
+.completedProjects {
+    background-color: mediumseagreen;
+    float: right;
+    padding: 5px;
+    width: 48%;
+}
+
+.projectDesc {
+    /*float: right;*/
+}
+
 .caption {
     margin: 0;
     padding-left:2px;
@@ -103,6 +136,11 @@ body {
 .nav {
     font-size: 14px;
     margin: 0 0 0 20px;
+}
+
+.back {
+    float: right;
+    font-size: 14px;
 }
 
 .floatBox {
