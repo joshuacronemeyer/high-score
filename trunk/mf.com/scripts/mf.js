@@ -1,3 +1,4 @@
+// # is for id, . is for class
 $(document).ready(function() {
     $("#mfFloater").dialog({
         autoOpen:false,
@@ -6,7 +7,11 @@ $(document).ready(function() {
         dialogClass:"floatBox",
         draggable:false,
         resizable:false
-    });
+    }).corner();
+
+    $(".currentProjects").corner();
+    $(".completedProjects").corner();
+
     $(".pool").hover(
         function () {
             show_float("images/poolSmall.jpg", "Look, a pool","250px","530px");
