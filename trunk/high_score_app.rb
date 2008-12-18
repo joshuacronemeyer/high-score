@@ -147,10 +147,14 @@ class HighScore < Shoes
       image("static/kong.png", :margin_left => "45%")
       stack :margin_left => 10, :margin_top => 10 do
         para "Machines:", @dash.turq_centered
-        machines = Machine.all().sort.each do |machine|
-          para machine.name, @dash.red_centered
-          machine.score.sort.each do |score|
-            para "%20s" % "#{score.player.name} - " + "%12s" % "#{score.formatWithComma.to_s}", @dash.turq_centered
+        flow do
+          machines = Machine.all().sort.each do |machine|
+            stack :width => "50%" do
+              para machine.name, @dash.red_centered
+              machine.score.sort.each do |score|
+                para "%10s" % "#{score.player.name} - " + "%12s" % "#{score.formatWithComma.to_s}", @dash.turq_centered
+              end
+            end
           end
         end
       end
