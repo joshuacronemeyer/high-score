@@ -21,6 +21,8 @@ class TestMachine < Test::Unit::TestCase
     assert_equal(1, Machine.find_by_name("M1").score.size())
     Score.add_high_score("AA", "M2", 200)
     Score.add_high_score("AA", "M1", 300)
-    assert_equal(2, Machine.find_by_name("M1").score.size())
+    assert_equal(1, Machine.find_by_name("M1").score.size())
+    Score.add_high_score("AB", "M1", 400)
+    assert_equal(1, Machine.find_by_name("M1").score.size())
   end
 end

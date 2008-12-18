@@ -75,4 +75,18 @@ class TestPlayer < Test::Unit::TestCase
     Score.add_high_score("JC", "WWJD", 1)
     assert_equal(20.0, Player.find_or_create_by_name("JC").ppg)
   end
+  
+  def test_only_one_high_score_per_game_josh_stinks
+    Score.add_high_score("JC", "WWJD", 1000)
+    Score.add_high_score("JC", "WWJD", 1)
+    player = Player.find_or_create_by_name("JC")
+    machine = Machine.find_or_create_by_name("WWJD")
+    assert_equal(1000, player.high_score(machine).score)
+  end
+  
+  def test_no_high_score_for_new_machine_and_player
+    player = Player.find_or_create_by_name("Foo")
+    machine = Machine.find_or_create_by_name("Bar")
+    assert_nil(player.high_score(machine))
+  end
 end

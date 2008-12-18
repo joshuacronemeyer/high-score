@@ -13,13 +13,21 @@ class Score < ActiveRecord::Base
   def self.add_high_score(player, machine, score)
     return if (player.match(/select/i) || machine.match(/select/i))
     player = Player.find_or_create_by_name(player)
-    score = Score.new(:score => score)
     machine = Machine.find_or_create_by_name(machine)
-    score.save
-    player.score << score
-    machine.score << score
-    player.save
-    machine.save
+    high_score = player.high_score(machine)
+    if(high_score.nil?) #create new score if user has never played
+      score = Score.new(:score => score)
+      score.save
+      player.score << score
+      machine.score << score
+      player.save
+      machine.save
+    else #only keep highest score per game
+      if(high_score.score < score)
+        high_score.score = score
+        high_score.save
+      end
+    end
   end
 
   def to_s
