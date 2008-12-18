@@ -34,9 +34,9 @@ class HighScore < Shoes
     navigation
     helper = HighScoreAppHelper.new
     stack :width => "30%", :margin_left => 5, :margin_top => 5 do
-      para "Name:", turq_centered
-      para "Machine:", turq_centered
-      para "Score:", turq_centered
+      para "Name:", turquoise_style
+      para "Machine:", turquoise_style
+      para "Score:", turquoise_style
     end
     stack :width => "70%", :margin_left => 5, :margin_top => 5 do
       @player_name = list_box :items => helper.get_player_names
@@ -65,7 +65,7 @@ class HighScore < Shoes
     navigation
     helper = HighScoreAppHelper.new
     stack :width => "30%", :margin_left => 5, :margin_top => 5 do
-      para "Name:", turq_centered
+      para "Name:", turquoise_style
     end
     stack :width => "70%", :margin_left => 5, :margin_top => 5 do
       @player_name = list_box :items => helper.get_player_names
@@ -76,7 +76,7 @@ class HighScore < Shoes
       mystack.clear
       me = Player.find_by_name(@player_name.text)
       mystack.append do
-        me.unplayed_games.each{|machine| para machine.name, turq_centered}
+        me.unplayed_games.each{|machine| para machine.name, turquoise_style}
       end
     end
   end
@@ -85,7 +85,7 @@ class HighScore < Shoes
     background black
     navigation
     stack :width => "30%", :margin_left => 5 do
-      para "Machine:", turq_centered
+      para "Machine:", turquoise_style
     end
     stack :width => "70%" do
       @game_name = edit_line
@@ -102,7 +102,7 @@ class HighScore < Shoes
     background black
     navigation
     stack :width => "30%", :margin_left => 5 do
-      para "Player Name:", turq_centered
+      para "Player Name:", turquoise_style
     end
     stack :width => "70%" do
       @player_name = edit_line
@@ -120,9 +120,9 @@ class HighScore < Shoes
     navigation
     helper = HighScoreAppHelper.new
     stack :width => "50%", :margin_left => 10, :margin_top => 10 do
-      para "Winner:", turq_centered
-      para "Loser:", turq_centered
-      para "Machine:", turq_centered
+      para "Winner:", turquoise_style
+      para "Loser:", turquoise_style
+      para "Machine:", turquoise_style
     end
     stack :width => "-50%", :margin => 10 do
       @winner_name = list_box :items => helper.get_player_names
@@ -143,16 +143,16 @@ class HighScore < Shoes
     window :width => 1024, :height => 768, :title => 'high score' do
       @dash ||= DashboardWindow.new(self)
       background black
-      banner "MonkeyFarm Arcade Classic", @dash.turq_centered
+      banner "MonkeyFarm Arcade Classic", @dash.turquoise_style
       image("static/kong.png", :margin_left => "45%")
       stack :margin_left => 10, :margin_top => 10 do
-        para "Machines:", @dash.turq_centered
+        para "Machines:", @dash.turquoise_style
         flow do
           machines = Machine.all().sort.each do |machine|
             stack :width => "50%" do
-              para machine.name, @dash.red_centered
+              para machine.name, @dash.red_style
               machine.score.sort.each do |score|
-                para "%10s" % "#{score.player.name} - " + "%12s" % "#{score.formatWithComma.to_s}", @dash.turq_centered
+                para "%10s" % "#{score.player.name} - " + "%12s" % "#{score.formatWithComma.to_s}", @dash.turquoise_style
               end
             end
           end
@@ -166,14 +166,14 @@ class HighScore < Shoes
     window :width => 1024, :height => 768, :title => 'high score' do
       @dash ||= DashboardWindow.new(self)
       background black
-      banner "MonkeyFarm Arcade Classic", @dash.turq_centered
+      banner "MonkeyFarm Arcade Classic", @dash.turquoise_style
       image("static/kong.png", :margin_left => "45%")
       stack :margin_left => 10, :margin_top => 10 do
-        para "Players:", @dash.turq_centered
+        para "Players:", @dash.turquoise_style
         players = Player.all().each do |player|
-          para player.name, @dash.red_centered
+          para player.name, @dash.red_style
           player.score.sort{|a,b| a.machine.name <=> b.machine.name}.each do |score|
-            para "#{score.machine.name} - #{score.formatWithComma}", @dash.turq_centered
+            para "#{score.machine.name} - #{score.formatWithComma}", @dash.turquoise_style
           end
         end
       end
@@ -185,7 +185,7 @@ class HighScore < Shoes
     window :width => 1024, :height => 768, :title => 'high score' do
       @dash ||= DashboardWindow.new(self)
       @dash.starfield_background
-      banner "MonkeyFarm Arcade Classic", @dash.turq_centered
+      banner "MonkeyFarm Arcade Classic", @dash.turquoise_style
       image("static/kong.png", :margin_left => "45%")
       machines = Machine.find(:all)
       mystack = stack
@@ -204,28 +204,28 @@ class HighScore < Shoes
   end
 
   private
-  def red_centered
+  def red_style
     {:stroke => red, :font => FONT, :align => "center"}
   end
 
-  def turq_centered
+  def turquoise_style
     {:stroke => turquoise, :font => FONT, :align => "center"}
   end
 
-  def white_centered
+  def white_style
     {:stroke => white, :font => FONT, :align => "center"}
   end
 
   def navigation
     stack do
-      para link("Add a High Score", :click => "/newscore"), white_centered
-      para link("Add a Grudge Match Score", :click => "/newgrudge"), white_centered
-      para link("Add Machine", :click => "/newmachine"), white_centered
-      para link("Add Player", :click => "/newplayer"), white_centered
-      para link("What to Play?", :click => "/unplayed"), white_centered
-      para link("View Machines", :click => "/machines"), white_centered
-      para link("View Dashboard", :click => "/dashboard"), white_centered
-      para link("View Players", :click => "/players"), white_centered
+      para link("Add a High Score", :click => "/newscore"), white_style
+      para link("Add a Grudge Match Score", :click => "/newgrudge"), white_style
+      para link("Add Machine", :click => "/newmachine"), white_style
+      para link("Add Player", :click => "/newplayer"), white_style
+      para link("What to Play?", :click => "/unplayed"), white_style
+      para link("View Machines", :click => "/machines"), white_style
+      para link("View Dashboard", :click => "/dashboard"), white_style
+      para link("View Players", :click => "/players"), white_style
     end
   end
 
@@ -237,13 +237,13 @@ class DashboardWindow
     @shoes=shoes 
   end
 
-  def turq_centered
+  def turquoise_style
     {:stroke => turquoise, :font => FONT, :align => "center"}
   end
-  def red_centered
+  def red_style
     {:stroke => red, :font => FONT, :align => "center"}
   end
-  def white_centered
+  def white_style
     {:stroke => white, :font => FONT, :align => "center"}
   end
 
@@ -285,17 +285,17 @@ class DashboardWindow
   def high_score_stack(machine, target_stack)
     return if machine.nil?
     if machine.is_grudge_match_machine?
-      target_stack.append{para("#{machine.name} Grudge Matches", red_centered.with(:size,20))}
+      target_stack.append{para("#{machine.name} Grudge Matches", red_style.with(:size,20))}
       machine.grudge_match.each do |match| 
         target_stack.append do
-          para "W: #{match.winner.name} - L: #{match.loser.name}", turq_centered
+          para "W: #{match.winner.name} - L: #{match.loser.name}", turquoise_style
         end
       end
     else 
-      target_stack.append{para("#{machine.name} Top 5", red_centered.with(:size,20))}
+      target_stack.append{para("#{machine.name} Top 5", red_style.with(:size,20))}
       Score.top_five_scores_by_machine_id(machine.id).each do |score| 
         target_stack.append do
-          para "#{score.player.name} - #{score.formatWithComma}", turq_centered
+          para "#{score.player.name} - #{score.formatWithComma}", turquoise_style
         end
       end
     end
@@ -304,9 +304,9 @@ class DashboardWindow
   def overall_score_stack(target_stack)
     time = Time.now
     target_stack.append do
-      para("Overall High Scores", red_centered.with(:size, 20))
+      para("Overall High Scores", red_style.with(:size, 20))
       Player.sorted_overall_scores.each do |player|
-        para("#{player.name} - " + "%3d" % player.overall_score + " - " + "%2.1f" % player.ppg + " ppg", turq_centered)
+        para("#{player.name} - " + "%3d" % player.overall_score + " - " + "%2.1f" % player.ppg + " ppg", turquoise_style)
       end
     end
     debug("TODO: speed this up.  old average is 3.14 seconds for prod data.  New time is: " + (Time.now - time).to_s)
