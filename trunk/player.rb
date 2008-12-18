@@ -49,6 +49,13 @@ class Player < ActiveRecord::Base
       return Machine.all() - my_machines
   end
   
+  def high_score(machine)
+    high = self.score.select{|score|
+      score.machine == machine
+    }
+    return high[0];
+  end
+  
   def ppg
     number_of_games = (score.size + wins.size + losses.size)
     if number_of_games > 0
