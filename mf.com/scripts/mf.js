@@ -2,33 +2,40 @@
 $(document).ready(function() {
     $("#mfFloater").dialog({
         autoOpen:false,
-        height:160,
+        height:148,
         width:140,
         dialogClass:"floatBox",
         draggable:false,
         resizable:false
-    }).corner();
+    });
 
     $(".currentProjects").corner();
     $(".completedProjects").corner();
 
     $(".pool").hover(
         function () {
-            show_float("images/poolSmall.jpg", "Look, a pool","250px","530px");
+            show_float("images/poolSmall.jpg", "Look, a pool","270px","500px");
         },
         function() {
             close_float();
         });
     $(".poolhouse").hover(
         function () {
-            show_float("images/pool/pool_ls.jpg", "Pool House","250px","530px");
+            show_float("images/noImageSmall.jpg", "Pool House","330px","530px");
         },
         function() {
             close_float();
         });
     $(".bonfirepit").hover(
         function () {
-            show_float("images/pool/pool_ls.jpg", "A Place for Burning","250px","600px");
+            show_float("images/noImageSmall.jpg", "A Place for Burning","280px","570px");
+        },
+        function() {
+            close_float();
+        });
+    $(".woodpile").hover(
+        function () {
+            show_float("images/noImageSmall.jpg", "Storage for Burning","250px","590px");
         },
         function() {
             close_float();

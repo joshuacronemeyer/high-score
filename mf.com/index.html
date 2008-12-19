@@ -28,8 +28,9 @@
 </head>
 <body>
 
-<div id="mfFloater" title="Title here">Click to see more...
-    <p><img id="floaterPic" class="smallPic" src="" alt="not found"/></p>
+<div id="mfFloater" title="Title here">
+    <div class="mfFloaterText">Click to see more...</div>
+    <img id="floaterPic" class="smallPic" src="images/noImageSmall.jpg" alt="not found"/>
     <!--<img class="floatArrow" alt="" src="images/comment-arrow.png"/>-->
 </div>
 
@@ -63,6 +64,11 @@
 
                 <p class="caption">The bonfire pit likes the snow too.</p>
             </li>
+            <li class="noListStyle">
+                <img class="featuredPic" src="images/thumb4.jpg" alt=""/>
+
+                <p class="caption">The trees like the snow.</p>
+            </li>
         </div>
     </div>
 </div>
@@ -83,7 +89,7 @@
     Click on parts of the image below to explore the Monkey Farm.
     <map id="Sample" name="Sample">
         <img src="mf1.jpg" usemap="#Sample" alt="" style="border-style:none"/>
-        <area class="johanGoal" shape="rect" coords="723,98,762,119" href="johanGoal.html" title="Johan Goal" alt=""/>
+        <area class="johannGoal" shape="rect" coords="723,98,762,119" href="johannGoal.html" title="Johann Goal" alt=""/>
         <area class="frontHouse" shape="poly" coords="750,310 750,310 746,372 804,376 806,313 750,310 "
               href="frontHouse.html"
               title="Front House" alt=""/>
@@ -96,7 +102,7 @@
         <area shape="poly"
               coords="402,305 402,305 398,417 449,425 454,344 495,345 495,329 456,326 454,310 402,305 "
               href="barn.html" title="The Barn" alt=""/>
-        <area shape="circle" coords="509,128,17" href="woodpile.html" title="Woodpile" alt=""/>
+        <area class="woodpile" shape="circle" coords="509,128,17" href="woodpile.html" title="Woodpile" alt=""/>
         <area class="bonfirepit" shape="circle" coords="487,147,10" href="bonfirepit.html" title="Bonfire Pit" alt=""/>
         <area class="poolhouse" shape="poly" coords="449,203 518,201 519,230 452,233 449,203 " href="poolHouse.html"
               title="Pool House" alt=""/>
@@ -163,7 +169,8 @@
     </div>
 </div>
 <div id="eventsTab" class="tab-container">
-    Current Events
+    <iframe class="googleCalendar" src="//www.google.com/calendar/embed?mode=AGENDA&wkst=1&bgcolor=%23ffffff&src=ua4nq16qpcjlldfb6m0a410m7c%40group.calendar.google.com&color=%23B1365F&ctz=America%2FChicago">
+    </iframe>
 </div>
 <div id="directionsTab" class="tab-container">
     Directions

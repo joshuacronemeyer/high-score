@@ -122,6 +122,11 @@ body {
 .smallPic {
     width: 120px;
     height: 90px;
+    border: solid thin black;
+}
+
+.mfFloaterText {
+    padding: 0;
 }
 
 .tabs {
@@ -170,4 +175,13 @@ body {
 
 .ui-dialog-titlebar-close {
     display: none;
+}
+
+/* Google calendar */
+.googleCalendar {
+    border-width:0;
+    width: 800px;
+    height:550px;
+    frameborder:0;
+    scrolling:no;
 }
