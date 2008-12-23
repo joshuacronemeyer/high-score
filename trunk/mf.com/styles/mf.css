@@ -76,6 +76,11 @@ body {
     height: 171px;
 }
 
+#animalPics {
+    float: left;
+    clear: left;
+}
+
 .noListStyle {
     list-style-type: none;
 }
@@ -123,7 +128,7 @@ body {
 .pics {
     clear: left;
     float: left;
-    margin: 10px 20px;
+    margin: 5px 20px;
 }
 
 .smallPic {
@@ -153,6 +158,10 @@ body {
     font-size: 14px;
     margin: 0 0 0 20px;
     width: 640px;
+}
+
+.mainNav {
+    
 }
 
 #prev {
