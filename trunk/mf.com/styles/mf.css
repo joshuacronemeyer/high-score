@@ -40,7 +40,12 @@ body {
 
 .subTitle {
     font-size: 22px;
-    margin: 5px
+    margin: 5px 0;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .normalText {
@@ -116,7 +121,9 @@ body {
     padding-left:2px;
 }
 .pics {
-    margin: 10px;
+    clear: left;
+    float: left;
+    margin: 10px 20px;
 }
 
 .smallPic {
@@ -142,8 +149,19 @@ body {
 }
 
 .nav {
+    float: left;
     font-size: 14px;
     margin: 0 0 0 20px;
+    width: 640px;
+}
+
+#prev {
+    float: left;
+    margin-right: 10px;
+}
+
+#next {
+    float: left;
 }
 
 .back {
