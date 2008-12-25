@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/mf.css"/>
+    <title>Projects at the Farm</title>
+
+    <script type="text/javascript" src="../scripts/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="../scripts/jquery.cycle.all.pack.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		$('#pics').cycle({
+			fx:     'fade',
+			speed:  'fast',
+			timeout: 0,
+			next:   '#next',
+			prev:   '#prev'
+		});
+	});
+	</script>
+</head>
+<body>
+<div class="page">
+		<!-- Top box -->
+		<div class="locationBox">
+			<p class="subTitle">Expanding the Soccer Field.</p>
+			<div>
+				<span class="label">Item:</span>  The Soccer Field
+			</div>
+			<div>
+				<span class="label">Started:</span>Latest round started in 2007.
+			</div>
+			<div class="summary">
+				The dirt is free.  We just have to pay for the trucks to dump it.  Then spread it out.  Then get grass to grow.
+			</div>
+		</div>
+		<div class="nav"><a id="prev" href="#">Prev</a> <a id="next" href="#">Next</a>
+            <a class="back" href="/mf/#projectsTab">Back to Projects</a>
+        </div>
+
+		<div class="pics" id="pics">
+            <li class="noListStyle">
+                <img src="../images/projects/soccerFieldLeveling/catapillar0007a.jpg" alt=""/>
+                <p class="caption">Construction 101. </p>
+            </li>
+            <li class="noListStyle">
+                <img src="../images/projects/soccerFieldLeveling/reshmi0153.jpg" alt=""/>
+                <p class="caption">Girls like tractors too!</p>
+            </li>
+            <li class="noListStyle">
+                <img src="../images/projects/soccerFieldLeveling/reshmi0169.JPG" alt=""/>
+                <p class="caption">What, you don't have a backhoe? </p>
+            </li>
+		</div>
+	</div>
+</body>
+</html>
