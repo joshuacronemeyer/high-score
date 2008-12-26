@@ -35,7 +35,7 @@ $(document).ready(function() {
         });
     $(".woodpile").hover(
         function () {
-            show_float("images/noImageSmall.jpg", "Storage for Burning","250px","590px");
+            show_float("images/woodpileSmall.jpg", "Storage for Burning","250px","590px");
         },
         function() {
             close_float();
