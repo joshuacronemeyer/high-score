@@ -42,10 +42,52 @@ $(document).ready(function() {
         });
     $(".blockhouse").hover(
         function () {
-            show_float("images/blockhouseSmall.jpg", "Concrete Blockhouse","360px","400px");
+            show_float("images/blockhouseSmall.jpg", "Concrete Blockhouse","430px","500px");
         },
         function() {
             close_float();
+        });
+    $(".garage1").hover(
+        function () {
+            show_float("images/noImageSmall.jpg", "Garage One","430px","650px");
+        },
+        function() {
+            close_float();
+        });
+    $(".garage2").hover(
+        function () {
+            show_float("images/noImageSmall.jpg", "Garage Two","430px","600px");
+        },
+        function() {
+            close_float();
+        });
+    $(".van").hover(
+        function () {
+            show_float("images/noImageSmall.jpg", "Cool van, dude","400px","500px");
+        },
+        function() {
+            close_float();
+        });
+    $(".johannGoal").hover(
+        function () {
+            show_float("images/noImageSmall.jpg", "Johann?","240px","740px");
+        },
+        function() {
+            close_float();
+        });
+    $(".barn").hover(
+	    function () {
+		show_float("images/noImageSmall.jpg", "Big Red","460px","500px");
+	    },
+	    function() {
+		close_float();
+        });
+     $(".frontHouse").hover(
+                 function () {
+                     show_float("images/noImageSmall.jpg", "People Go Here","440px","800px");
+                 },
+                 function() {
+                     close_float();
         });
 });
 function show_float(image, title, top, left) {
