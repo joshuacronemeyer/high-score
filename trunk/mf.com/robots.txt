@@ -1,1 +1,2 @@
-http://www.monkeyfarm.org/
+User-Agent: *
+Allow: /
